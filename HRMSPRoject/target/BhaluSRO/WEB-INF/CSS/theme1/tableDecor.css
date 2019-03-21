@@ -1,0 +1,33 @@
+/*For alternating colors for data population i*/
+/* .alternative_cls:nth-child(odd){
+    background:#ccc;
+}
+.alternative_cls:nth-child(1), .alternative_cls:nth-child(even){
+    background:#00759c;
+} */
+.departmentHeader
+{
+	background-color: #0E4679;
+}
+.employeetHeader
+{
+background-color:#0E4679
+}
+
+.tg
+{
+	background-color:#afb6d1;
+}
+/* tr:hover  {
+	
+} */
+.employeeTR:hover{
+	
+	background-color:#C6BBDB;
+}
+th {
+	color:#ffffff;
+}
+a:hover {
+  color: lightgreen;
+}

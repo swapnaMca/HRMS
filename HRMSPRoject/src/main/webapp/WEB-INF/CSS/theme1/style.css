@@ -1,0 +1,26 @@
+
+#login .container #login-row #login-column .login-box {
+  margin-top: 120px;
+  max-width: 600px;
+  height: 380px;
+  border: 1px solid #9C9C9C;
+ /*  background-image: linear-gradient(to bottom, #aec1c3, #01769c, #bcc5c6, #cfd5d5, #e3e5e5); */
+    background-image: linear-gradient(to bottom,#00759c, #00759c, #cfd5d5, #e3e5e5);
+  
+}
+#login .container #login-row #login-column .login-box #login-form {
+  padding: 20px;
+}
+#login .container #login-row #login-column .login-box #login-form #register-link {
+  margin-top: -85px;
+}
+.focus1:focus
+{
+border-style: solid;
+  border-width: 2px;
+}
+.loginId
+{
+	 background-image: linear-gradient(to bottom,#bcc5c6, #aec1c3, #cfd5d5,#00759c, #00759c);
+	
+}

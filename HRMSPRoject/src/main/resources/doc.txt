@@ -1,0 +1,34 @@
+for reading validation messages from properties use
+<annotation-driven  validator="validator"/>
+<beans:bean id="validator" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean">
+    <beans:property name="validationMessageSource" ref="messageSource"/>
+</beans:bean>
+<beans:bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
+    <beans:property name="basenames" value="messages" />
+    <beans:property name="defaultEncoding" value="UTF-8" />
+  	<beans:property name="useCodeAsDefaultMessage" value="true"/>
+    <!-- The key here is fallbackToSystemLocale which prevents the system to look into the system, 
+        thus using "message.properties" if he doesn't find the locale. -->
+    <beans:property name="fallbackToSystemLocale" value="false"/>
+</beans:bean>
+ Link:https://stackoverflow.com/questions/29416136/why-spring-message-interpolation-argument-replacement-using-hibernate-validator
+ 
+if u r not placing transactional in service ....u will get error becoz session should not open
+//Could not obtain transaction-synchronized Session for current thread
+
+hibernate detached error : dont privide values for primary key if u r giving auotgenerate to model class
+
+
+http://websystique.com/springmvc/spring-mvc-4-and-spring-security-4-integration-example/
+
+/************************/
+https://stackoverflow.com/questions/39404757/hibernate-fetch-data-from-two-tables-with-one-to-one-mapping
+
+
+/get two tablesdata from hibernate
+url:https://www.journaldev.com/3422/hibernate-native-sql-query-example
+
+Problems:
+
+//Hibernate will update all the unmodified columns.
+If set the dynamic-insert to true, which means exclude unmodified properties in the Hibernate’s SQL update statement

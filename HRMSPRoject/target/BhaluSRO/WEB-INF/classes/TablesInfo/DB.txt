@@ -1,0 +1,68 @@
+CREATE TABLE `hrms`.`hrms_employee_leaves` (
+  `Id` INT NOT NULL AUTO_INCREMENT,
+  `empId` INT NULL,
+  `leaveId` INT NULL,
+  `start_date` DATE NULL,
+  `end_date` DATE NULL,
+  `total_days` INT NULL,
+  `hrms_employee_leavescol` VARCHAR(45) NULL,
+  PRIMARY KEY (`Id`),
+  INDEX `leaves_leaveId_idx` (`leaveId` ASC),
+  INDEX `leaves_empId_idx` (`empId` ASC),
+  CONSTRAINT `leaves_empId`
+    FOREIGN KEY (`empId`)
+    REFERENCES `hrms`.`hrms_employee_details` (`ID`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  CONSTRAINT `leaves_leaveId`
+    FOREIGN KEY (`leaveId`)
+    REFERENCES `hrms`.`leaves` (`leaveId`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE);
+    
+    
+    <!- EMPLOYEE PROJECTS DATABASE->
+    
+    CREATE TABLE `hrms`.`projects` (
+  `projectId` INT NOT NULL AUTO_INCREMENT,
+  `ProjectName` VARCHAR(45) NOT NULL,
+  `projectStatus` VARCHAR(45) NULL,
+  PRIMARY KEY (`projectId`, `ProjectName`));
+  
+    CREATE TABLE `hrms`.`hrms_employee_projects` (
+  `project_Id` INT NOT NULL AUTO_INCREMENT,
+  `empId` INT NULL,
+  `projectHandled` VARCHAR(45) NULL,
+  `dateStarted` DATE NULL,
+  `dateEnded` DATE NULL,
+  `Status` VARCHAR(45) NULL,
+  PRIMARY KEY (`project_Id`),
+  INDEX `empId_idx` (`empId` ASC),
+  CONSTRAINT `Projects_employee`
+    FOREIGN KEY (`empId`)
+    REFERENCES `hrms`.`hrms_employee_details` (`ID`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE);
+    
+    
+    CREATE TABLE `hrms`.`hrms_employee_projects` (
+  `Id` INT NOT NULL AUTO_INCREMENT,
+  `empId` INT NOT NULL,
+  `projectId` INT NOT NULL,
+  `projectHandled` VARCHAR(45) NOT NULL,
+  `dateStarted` DATE NULL,
+  `dateEnded` DATE NULL,
+  `Status` VARCHAR(45) NULL,
+  PRIMARY KEY (`Id`),
+  INDEX `Employee_project_idx` (`empId` ASC),
+  INDEX `Projects_projectAssign_idx` (`projectId` ASC),
+  CONSTRAINT `Employee_project`
+    FOREIGN KEY (`empId`)
+    REFERENCES `hrms`.`hrms_employee_details` (`ID`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  CONSTRAINT `Projects_projectAssign`
+    FOREIGN KEY (`projectId`)
+    REFERENCES `hrms`.`hrms_projects` (`projectId`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE);
