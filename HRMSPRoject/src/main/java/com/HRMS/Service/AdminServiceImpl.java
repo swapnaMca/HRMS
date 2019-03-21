@@ -28,8 +28,8 @@ public class AdminServiceImpl implements AdminService{
 	}
 
 	@Override
-	public void addEmployee(EmployeeVO e) {
-		adminDao.addEmployee(e);
+	public void addEmployee(EmployeeVO e,String actionName) {
+		adminDao.addEmployee(e,actionName);
 		
 	}
 	public void updateEmployee(EmployeeVO e) {

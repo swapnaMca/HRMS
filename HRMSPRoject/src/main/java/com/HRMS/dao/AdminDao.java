@@ -12,7 +12,7 @@ import com.mysql.jdbc.Blob;
 
 public interface AdminDao {
 	
-	public void addEmployee(EmployeeVO e);
+	public void addEmployee(EmployeeVO e,String actionName);
 	public void addEmployeeImage(EmployeeVOImage e);
 	public void addDepartment(DepartmentVO e);
 	public void updateEmployee(EmployeeVO e);

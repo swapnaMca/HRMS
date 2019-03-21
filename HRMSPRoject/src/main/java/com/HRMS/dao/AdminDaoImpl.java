@@ -33,10 +33,22 @@ public class AdminDaoImpl implements AdminDao{
 	        return sessionFactory.getCurrentSession();
 	    }
 	
-	public void addEmployee(EmployeeVO e) {
+	public void addEmployee(EmployeeVO e,String actionName) {
 		Session session=sessionFactory.getCurrentSession();
-		//session.persist(e);
-		session.saveOrUpdate(e);
+
+		if(actionName.equalsIgnoreCase("save"))
+		{
+System.out.println("DAO....savesavesave");
+			session.save(e);
+
+		}
+		else
+		{
+			System.out.println("DAO....update");
+
+			session.update(e);
+
+		}
 		
 	}
 	public void updateEmployee(EmployeeVO e) {

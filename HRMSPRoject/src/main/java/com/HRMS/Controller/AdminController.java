@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
@@ -73,29 +74,66 @@ public class AdminController {
 		return "EmployeeRegister";
 	}
 
-	@RequestMapping(value="/saveEmployee", method = RequestMethod.POST)
+	@RequestMapping(value={"/saveEmployee","/updateEmployee"}, method = RequestMethod.POST)
 	public String saveEmployee(@Valid @ModelAttribute("employeeVO") EmployeeVO employeeVO, BindingResult result,
-			@RequestParam("image") MultipartFile photo ,Model model) throws IOException{
-
+			@RequestParam("image") MultipartFile photo ,Model model,HttpServletRequest request) throws IOException{
+		String requestUrl=request.getServletPath();
+		System.out.println("requestUrlrequestUrl"+requestUrl);
+		if(requestUrl.equals("/Admin/saveEmployee"))
+		{
 		if (result.hasErrors()) {
 			return "EmployeeRegister";
 		} else {
 			employeeVO.setEmployeeLogin(employeeVO.getEmployeeLogin());
 			employeeVO.getEmployeeLogin().setEmployeeVO(employeeVO);
-			System.out.println(photo.getContentType() + photo.getName() + "***********IMAGEEEEEEE" + "OBJECT"
-					+ employeeVO.toString()+"^^^^^^^"+photo);
-			System.out.println("isEmpty"+photo.isEmpty());
-			//if(photo.getBytes()==null)
+			
+			
 			employeeVO.getEmployeeLogin().setPhoto(photo.getBytes());
-			this.adminService.addEmployee(employeeVO);
+			this.adminService.addEmployee(employeeVO,"save");
+		}
+		}
+		else
+		{
+			System.out.println("updateupdateupdate");
+			if(photo.isEmpty())
+			{
+				EmployeeVO emp= new EmployeeVO();
+				emp  = this.adminService.getEmployeeById(employeeVO.getId());//always maintains image from db not null if u already isert into image bcoz dynamicupdate not working
+				employeeVO.getEmployeeLogin().setPhoto(emp.getEmployeeLogin().getPhoto());
+			}
+			else
+				employeeVO.getEmployeeLogin().setPhoto(photo.getBytes());
+			
+			employeeVO.setEmployeeLogin(employeeVO.getEmployeeLogin());
+			employeeVO.getEmployeeLogin().setEmployeeVO(employeeVO);
+			
+
+			this.adminService.addEmployee(employeeVO,"update");
 		}
 		return "redirect:/Admin/getEmployeesData";
 	}
+	/*@RequestMapping(value={"/updateEmployee"})
+	public String updateEmployee(@Valid @ModelAttribute("employeeVO") EmployeeVO employeeVO, BindingResult result
+			,Model model,HttpServletRequest request) throws IOException
+		{
+		System.out.println("updateEmployeeupdateEmployee"+employeeVO.getEmployeeLogin().getRole());
+			//employeeVO.getEmployeeLogin().setPhoto(photo.getBytes());
+			employeeVO.setEmployeeLogin(employeeVO.getEmployeeLogin());
+			employeeVO.getEmployeeLogin().setEmployeeVO(employeeVO);
+			
 
+			this.adminService.addEmployee(employeeVO,"update");
+			return "redirect:/Admin/getEmployeesData";
+		}*/
 	
 	@RequestMapping("/editEmployee/{id}")
 	public String editEmployee(@PathVariable("id") int id, Model model) {
-		model.addAttribute("employeeVO", this.adminService.getEmployeeById(id));
+		EmployeeVO employeeVO=this.adminService.getEmployeeById(id);
+		System.out.println("/editEmployee/{id}/editEmployee/{id}/editEmployee/{id}");
+		/*EmployeeVO vo=new EmployeeVO();
+		vo.setEmployeeLogin(employeeLogin);*/
+		model.addAttribute("employeeVO",this.adminService.getEmployeeById(id));
+
 		model.addAttribute("listEmployees", this.adminService.listPersons());
 
 		Object[] departmentListToArray = this.adminService.listDepartments().toArray();
@@ -122,7 +160,7 @@ public class AdminController {
 	public void getEmployeeImage(HttpServletResponse response, @PathVariable("id") int id) throws Exception {
 		response.setContentType("image/jpeg");
 		
-		EmployeeVO emp = this.adminService.getEmployeeById(id);
+			EmployeeVO emp = this.adminService.getEmployeeById(id);
 		 
 			 response.setContentType("image/jpeg, image/jpg, image/png, image/gif");
 

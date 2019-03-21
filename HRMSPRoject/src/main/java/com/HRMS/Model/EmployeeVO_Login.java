@@ -14,15 +14,19 @@ import javax.persistence.OneToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
-
 import org.hibernate.annotations.DynamicInsert;
+import org.hibernate.annotations.DynamicUpdate;
+import org.hibernate.annotations.SelectBeforeUpdate;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Parameter;
 import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
-@Table(name="hrms_login")
 @DynamicInsert
+@DynamicUpdate
+@SelectBeforeUpdate
+@Table(name="hrms_login")
+
 public class EmployeeVO_Login implements Serializable 
 {
     @Id
