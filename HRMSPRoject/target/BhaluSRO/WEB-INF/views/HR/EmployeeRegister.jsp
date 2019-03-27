@@ -11,13 +11,16 @@
 <title>Insert title here</title>
 <spring:url value="/resources/main.css" var="mainCss" />
 <spring:url value="/resources/error.css" var="errCss" />
+<spring:url value="/resources/BootStrap.css" var="bootStrap" />
+
+<link href="${bootStrap}" rel="stylesheet" />
 <link href="${mainCss}" rel="stylesheet" />
 <link href="${errCss}" rel="stylesheet" />
 
 </head>
 <body>
 
-<div class="col-sm-8 text-left"> 
+<div class="col-sm-10 text-left"> 
 <c:url var="addAction" value="/Admin/saveEmployee" ></c:url>
 <form:form action="${addAction}"  method="post" enctype="multipart/form-data" modelAttribute="employeeVO">
 <div id="addEmployeeDiv">

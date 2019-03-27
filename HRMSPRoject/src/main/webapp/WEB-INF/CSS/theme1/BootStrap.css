@@ -47,8 +47,18 @@ background-color: #a89bc7;
 	
 	background-color: #bcc5c6;
 }
- 
-  /*  .navbar-inverse
+ /*for body color*/
+  .text-left{
+     background-color: #cfb8dc;
+     height: 1000px;
+    }
+    .navbar-inverse{
+    background-color: #225486;
+    }
+    
+  /* for header background
+  
+    .navbar-inverse
     {
       background-color: #cbacd7;
     }

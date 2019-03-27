@@ -3,11 +3,13 @@ package com.HRMS.Controller;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Base64;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -101,13 +103,22 @@ public class EmployeeController {
 		}
 	 	@RequestMapping("/UpdateProfilePic/{id}")
 		public ModelAndView UpdateProfilePic(@Valid @ModelAttribute("employeeLogin") EmployeeVO_Login employeeLogin,BindingResult result,
-				@PathVariable("id") int id,@RequestParam("image") MultipartFile photo) throws IOException {
+				@PathVariable("id") int id,@RequestParam("image") MultipartFile photo,HttpSession session) throws IOException {
 	 		
 	 		
 	 		ModelAndView modelAndView = new ModelAndView();
 	 		employeeLogin.setPhoto(photo.getBytes());
 	 		employeeService.updateEmployeeProfilePic(employeeLogin);//for update of any column
-	 		modelAndView.addObject("successFlag", employeeLogin.getUserName()+"Profile Pic  Updated"+" Successfully");
+	 		EmployeeVO employee=employeeService.getEmployeeById(id);
+	 		if(employee.getEmployeeLogin().getPhoto()!=null)
+			{
+				
+			//java8 has Base64
+				byte[] encodeBase64 =Base64.getEncoder().encode(employee.getEmployeeLogin().getPhoto());
+			    String base64Encoded = new String(encodeBase64, "UTF-8");
+			    session.setAttribute("userImage", base64Encoded );
+			}
+	 		modelAndView.addObject("successFlag", "Dear "+employeeLogin.getUserName()+" Profile Pic  Updated"+" Successfully");
 	 		modelAndView.setViewName("changeProfilePic");
 	 		return modelAndView;
 	 	}

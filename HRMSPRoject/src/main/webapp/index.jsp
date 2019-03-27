@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Bootstrap Example</title>
+  <title>HRMS</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
   <style>
     /* Remove the navbar's default margin-bottom and rounded borders */ 
     .navbar {
@@ -20,7 +21,7 @@
     /* Set gray background color and 100% height */
     .sidenav {
       padding-top: 20px;
-      background-color: #c8c3da;
+      background-color: #c2a4d2;
       height: 100%;
     }
     
@@ -41,14 +42,17 @@
     }
     .text-left
     {
-     /* background-color: #c1cce0; */
-     
+    /* background-color: #c8c3da*/ ;
+ 	  height: 550px;
+    }
+    .navbar-inverse{
+    background-color: #225486;
     }
     
   </style>
 </head>
 <body>
-<div class="container">
+
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
@@ -57,11 +61,13 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>                        
       </button>
-      <a class="navbar-brand" href="#">Logo</a>
+      <spring:url value="/images/Logo.jpg" var="logo" />
+         <img width=100 height=80 src="${logo}"/>
+      <%-- <a class="navbar-brand" href="${image1}">Logo</a> --%>
     </div>
-    <div class="collapse navbar-collapse" id="myNavbar">
+     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Home</a></li>
+        <li><a href="#">Home</a></li>
         <li><a href="#">About</a></li>
         <li><a href="#">Projects</a></li>
         <li><a href="#">Contact</a></li>
@@ -77,36 +83,43 @@
 <div class="container-fluid text-center">    
   <div class="row content">
     <div class="col-sm-2 sidenav">
-      
+     
     </div>
     <div class="col-sm-8 text-left"> 
-      <h1>Welcome</h1>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-      <hr>
-      <h3>Test</h3>
-      <p>Lorem ipsum...</p>
+      <h1>WelCome To HRMS</h1>
+      <marquee>
+       <spring:url value="/images/MarqueeImage.jpg" var="MarqueImage" />
+         <img src="${MarqueImage}"/>
+          <spring:url value="/images/employeeMarquee.jpg" var="MarqueImage" />
+         <img src="${MarqueImage}"/>
+          <spring:url value="/images/employee2.jpg" var="MarqueImage" />
+         <img src="${MarqueImage}"/>
+      </marquee>
+      <p>
+     
+A Human Resources Management System (HRMS) is a type of information system (IS) that is designed to manage an organization's computerized and automated human resource (HR) processes. It is a combination of hardware and software resources that hosts and provides most, if not all, of a HR department's business logic K
+
+      </p>
     </div>
     <div class="col-sm-2 sidenav">
-      <div class="well">
-        <p>ADS</p>
-      </div>
-      <div class="well">
-        <p>ADS</p>
-      </div>
+      <spring:url value="/images/hrms.jpg" var="image1" />
+         <img width=220 height=172 src="${image1}"/>
+     </br> 
+     
+      <spring:url value="/images/image1.jpg" var="image1" />
+         <img width=220 height=172 src="${image1}"/>
+     </br>
+     
+      <spring:url value="/images/image2.jpg" var="image1" />
+         <img width=220 height=172 src="${image1}"/>
+   
     </div>
   </div>
 </div>
-</div>
+
 <footer class="container-fluid text-center">
   <p>Footer Text</p>
 </footer>
-<script type="text/javascript">
-var selector = '.nav li';
 
-$(selector).on('click', function(){
-    $(selector).removeClass('active');
-    $(this).addClass('active');
-});
-</script>
 </body>
 </html>

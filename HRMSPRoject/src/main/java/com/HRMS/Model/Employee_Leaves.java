@@ -30,7 +30,7 @@ public class Employee_Leaves implements Serializable {
 	private Date start_date;
 	private Date end_date;
 	private int total_days;
-	
+	private String leave_status;
 	
 	@ManyToOne(cascade=CascadeType.MERGE)
 	@JoinColumn(name="leaveId" )
@@ -78,10 +78,21 @@ public class Employee_Leaves implements Serializable {
 		this.total_days = total_days;
 	}
 
+	
+
 	@Override
 	public String toString() {
-		return "Employee_Leaves [Id=" + Id + ", empId=" + empId + ", start_date=" + start_date
-				+ ", end_date=" + end_date + ", total_days=" + total_days + "]";
+		return "Employee_Leaves [Id=" + Id + ", empId=" + empId + ", start_date=" + start_date + ", end_date="
+				+ end_date + ", total_days=" + total_days + ", leave_status=" + leave_status + ", leaves=" + leaves
+				+ "]";
+	}
+
+	public String getLeave_status() {
+		return leave_status;
+	}
+
+	public void setLeave_status(String leave_status) {
+		this.leave_status = leave_status;
 	}
 
 	@Override

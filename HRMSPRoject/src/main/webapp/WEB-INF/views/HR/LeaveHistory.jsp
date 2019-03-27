@@ -43,7 +43,7 @@
 
 </table>
 </div>
-</form:form>
+
 
 <c:if test="${!empty history}">
 	<h3>Employees List</h3>
@@ -61,8 +61,8 @@
 		<th width="120">Leave Name</th>
 		
 		
-		<th width="60">Edit</th>
-		<th width="60">Delete</th>
+		<th width="60">Status</th>
+		
 	</tr>
 	<c:forEach items="${history}" var="history">
 	
@@ -73,14 +73,22 @@
 				<td width="120">${history.total_days}</td>
 				<td width="120">${history.leaves.leaveId}</td>
 				<td width="120">${history.leaves.leaveName}</td>
-				
-			<td width="60"><a href="<c:url value='/editEmployee/${history.empId}' />" >Edit</a></td>
-			<td width="60"><a href="<c:url value='/removeEmployee/${history.empId}' />" >Delete</a></td>
+				<td>
+				<form:select path="leave_status" cssClass="focus1" >
+ <form:option value="NONE" label="--- Select ---"/>
+ <form:option value="Accept" label="Accept"/>
+<form:option value="Reject" label="Reject"/>
+
+</form:select>
+				</td>
+			<%-- <td width="60"><a href="<c:url value='/editEmployee/${history.empId}' />" >Edit</a></td>
+			<td width="60"><a href="<c:url value='/removeEmployee/${history.empId}' />" >Delete</a></td> --%>
 		</tr>
 	
 	</c:forEach>
 	</table>
 	</div>
 </c:if>
+</form:form>
 </body>
 </html>

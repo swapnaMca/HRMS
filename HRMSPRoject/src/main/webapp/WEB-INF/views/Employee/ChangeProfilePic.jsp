@@ -30,7 +30,7 @@
 <td><form:hidden path="role" value="${login.employeeLogin.role}" cssClass="focus1" /></td>
 <td><form:errors path="role" cssClass="error"/></td>
 </tr>
-<tr><td>Upload Image</td>
+<tr><td>Change Image</td>
  <td><input type="file" name="image" id="image"/></td>
 </tr>
 <tr>
@@ -39,7 +39,7 @@
 </tr>
 
 </table>
-
+<p>${successFlag}</p>
 </div>	
 	</form:form>
 	</div>

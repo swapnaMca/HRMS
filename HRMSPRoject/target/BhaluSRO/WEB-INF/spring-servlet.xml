@@ -27,6 +27,7 @@
 <beans:bean id="validator" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean">
     <beans:property name="validationMessageSource" ref="messageSource"/>
 </beans:bean>
+
 <beans:bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
     <beans:property name="basenames" value="messages" />
     <beans:property name="defaultEncoding" value="UTF-8" />
@@ -35,6 +36,8 @@
         thus using "message.properties" if he doesn't find the locale. -->
     <beans:property name="fallbackToSystemLocale" value="false"/>
 </beans:bean>
+
+<!-- For configuration of resources -->
 	<resources mapping="/resources/**" location="/WEB-INF/CSS/theme1/" /> 
 	<resources mapping="/js/**" location="/WEB-INF/JS/" /> 
 	<resources mapping="/images/**" location="/WEB-INF/CSS/images/" /> 
@@ -47,6 +50,7 @@
 </beans:property>
 <beans:property name="order" value="0" />
  </beans:bean>
+ <!-- for Tiles configuration  -->
 <beans:bean id="tilesConfigurer" class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">
 <beans:property name="definitions">
 <beans:list>

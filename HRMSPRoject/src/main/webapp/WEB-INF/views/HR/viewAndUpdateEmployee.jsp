@@ -18,7 +18,7 @@
 
 <c:url var="updateAction" value="/Admin/updateEmployee" ></c:url>
 
- <form:form action="${updateAction}" method="post" enctype="multipart/form-data" modelAttribute="employeeVO">
+ <form:form action="${updateAction}"  modelAttribute="employeeVO">
 
  <%-- <form:form action="${updateAction}"  modelAttribute="employeeVO"> --%>
  

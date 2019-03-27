@@ -16,10 +16,13 @@
 <link href="${tableCss}" rel="stylesheet" />
 <body>
 
-<c:url var="addAction" value="/Admin/saveEmployee" ></c:url>
+<c:url var="updateAction" value="/Admin/updateEmployee" ></c:url>
 
-<form:form action="${addAction}" method="post" enctype="multipart/form-data" modelAttribute="employeeVO">
-<div id="addEmployeeDiv">
+ <form:form action="${updateAction}"  modelAttribute="employeeVO">
+
+ <%-- <form:form action="${updateAction}"  modelAttribute="employeeVO"> --%>
+ 
+ <div id="addEmployeeDiv">
 
 <table align="center" >
 <th><p style="color:#0E4679">Employee Details</p></th>
@@ -81,15 +84,15 @@
 <td>Password</td><td><form:password path="employeeLogin.password" cssClass="focus1" /></td>
 <td><form:errors path="employeeLogin.password" cssClass="error"/></td>
 </tr> --%>
-<%-- <tr>
+<tr>
 <td>Role</td><td><form:input path="employeeLogin.role" cssClass="focus1"/></td>
 <td><form:errors path="employeeLogin.role" cssClass="error"/></td>
-</tr> --%>
-<!-- @DynamicUpdate -->
-<tr><td>Upload Image</td>
- <td><input type="file" name="image" id="image"/></td>
+</tr>
+<tr><td>Image</td>
+<td><img width="100" height="100" src='${pageContext.request.contextPath}/Admin/getEmployeePhoto/${id}'/></td>
 </tr>
 <tr>
+
 		<td colspan="2">
 			<c:if test="${!empty employeeVO.firstName}">
 				<input type="submit"
