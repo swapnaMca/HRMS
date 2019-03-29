@@ -114,11 +114,11 @@
 <!-- End of setup -->
 
 <!-- EmployeeImageRegister -->
-	<definition name="EmployeeImageRegister" extends="DefaultTemplate">
-		<put-attribute name="title" value="Welcome" />
-		<put-attribute name="menu" value="/WEB-INF/jsps/Admin/HRMenu.jsp" />
-		<put-attribute name="header" value="/WEB-INF/jsps/Admin/HRHeader.jsp" />
-		<put-attribute name="body"
-			value="/WEB-INF/views/HR/EmployeeRegisterImage.jsp" />
-	</definition>
+	<definition name="viewEmployeeLeaveStatus" extends="DefaultTemplate">
+		<put-attribute name="menu" value="/WEB-INF/jsps/Employee/EmployeeMenu.jsp" />
+		<put-attribute name="header" value="/WEB-INF/jsps/Employee/EmployeeHeader.jsp" />
+	<put-attribute name="body"
+			value="/WEB-INF/views/Employee/viewLeaveStatus.jsp" />
+</definition>
+	
 </tiles-definitions>

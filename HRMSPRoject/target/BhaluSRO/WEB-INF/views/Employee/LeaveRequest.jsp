@@ -47,7 +47,10 @@
 <td><form:errors path="total_days" cssClass="error"/></td>
 </tr>
 
-
+<tr>
+<td>status</td><td><form:hidden path="leave_status" value="Pending" cssClass="focus1"/></td>
+<td><form:errors path="leave_status" cssClass="error"/></td>
+</tr>
 <tr>
 <td><input type="submit"/></td>
 

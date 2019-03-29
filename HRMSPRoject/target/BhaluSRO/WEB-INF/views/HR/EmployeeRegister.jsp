@@ -11,12 +11,21 @@
 <title>Insert title here</title>
 <spring:url value="/resources/main.css" var="mainCss" />
 <spring:url value="/resources/error.css" var="errCss" />
-<spring:url value="/resources/BootStrap.css" var="bootStrap" />
 
-<link href="${bootStrap}" rel="stylesheet" />
+<%-- <spring:url value="/resources/BootStrap.css" var="bootStrap" />
+
+<link href="${bootStrap}" rel="stylesheet" /> --%>
 <link href="${mainCss}" rel="stylesheet" />
 <link href="${errCss}" rel="stylesheet" />
-
+<!-- <style>
+.text-left{
+     background-color: #c2a4d2;
+     height: 1000px;
+    }
+    .navbar-inverse{
+    background-color: blue;
+    }
+</style> -->
 </head>
 <body>
 
@@ -65,7 +74,7 @@
 <tr>
 <td>Department Id(*)</td><td><form:select path="department_id" cssClass="focus1">
  <form:option value="NONE" label="--- Select ---"/>
-<form:options items="${DepartmentList}"/>
+<form:options items="${DropDownList}"/>
 
 </form:select> </td>
 <td><form:errors path="department_id" cssClass="error"/></td>

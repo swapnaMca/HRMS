@@ -6,41 +6,39 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
  
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  <!-- for PopUp menu -->
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 <spring:url value="/resources/BootStrap.css" var="bootStrap" />
 <link href="${bootStrap}" rel="stylesheet" />
 </head>
 <body>
 
-<%--  <ul class="nav nav-pills nav-stacked">
-     <li><spring:url value="/viewProfile/${user.id}" var="viewProfile" htmlEscape="true" />
-<a href="${viewProfile}" class="btn btn-primary">View Profile</a></li>
- <li><spring:url value="/LoadChangePassword" var="changePassword" htmlEscape="true" />
-<a href="${changePassword}" class="btn btn-primary">Change Password</a></li>
-<li><spring:url value="/changePassword/${user.id}" var="changePassword" htmlEscape="true" />
-<a href="${changePassword}">Change Password</a></li>
- 
- <li><spring:url value="/LeaveRequest" var="leaveRequest" htmlEscape="true" />
-<a href="${leaveRequest}" class="btn btn-primary">Leave Request</a></li>
-     
-</ul> --%>
 <div class="btn-group-vertical">
-<spring:url value="/viewProfile/${user.id}" var="viewProfile" htmlEscape="true" />
+<spring:url value="/viewProfile/${login.id}" var="viewProfile" htmlEscape="true" />
 <a href="${viewProfile}" class="btn btn-primary">View Profile</a>
    <spring:url value="/LoadChangePassword" var="changePassword" htmlEscape="true" />
  <a href="${changePassword}" class="btn btn-primary">EditProfile
   <spring:url value="/images" var="images" />
     <img src="${images}/editIcon.png" width="30" height="23" /> 
 </a>
-<spring:url value="/LeaveRequest" var="leaveRequest" htmlEscape="true" />
-	<a href="${leaveRequest}" class="btn btn-primary">Leave Request</a>
-
-
+<!-- For Leaves Menu Popup -->
+<a href=".collapse" class="btn btn-primary" data-toggle="collapse">Leaves>></a>
+  <div  id="collapseDive" class="collapse">
+  <spring:url value="/LeaveRequest" var="leaveRequest" htmlEscape="true" />
+	<a href="${leaveRequest}" class="collapseLink">Apply Leave</a>
+	
   </div>
+   <div  id="collapseDive" class="collapse">
+  <spring:url value="/checkEmployeeLeaveStatus/${login.id}" var="checkEmployeeLeaveStatus" htmlEscape="true" />
+	<a href="${checkEmployeeLeaveStatus}" class="collapseLink">Visit LeaveStatus</a>
+	
+  </div>
+  </div>
+  
 </body>
 </html>

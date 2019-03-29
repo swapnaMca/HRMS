@@ -65,7 +65,7 @@
 <tr>
 <td>Department Id(*)</td><td><form:select path="department_id" cssClass="focus1">
  <form:option value="NONE" label="--- Select ---"/>
-<form:options items="${DepartmentList}"/>
+<form:options items="${DropDownList}"/>
 
 </form:select> </td>
 <td><form:errors path="department_id" cssClass="error"/></td>

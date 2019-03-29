@@ -77,7 +77,6 @@ public class EmployeeController {
 	 		
 	 		ModelAndView modelAndView = new ModelAndView();
 	 		if (result.hasErrors()) {
-	 			System.out.println("**********444444444**********"+result.getFieldError());
 	 			modelAndView.setViewName("changePasswordPage");
 	 		}
 	 		else
@@ -85,7 +84,6 @@ public class EmployeeController {
 	 			
 	 				if(employeeLogin.getPassword().equalsIgnoreCase(employeeLogin.getConfirmPassword()))
 	 				{
-	 					System.out.println("password and confirm are equal"+employeeLogin.getConfirmPassword()+""+employeeLogin.getId());
 	 					employeeService.updateEmployeePassword(employeeLogin);
 	 					modelAndView.addObject("PasswordFlag", employeeLogin.getUserName()+"Password Updated"+" Successfully");
 	 					modelAndView.setViewName("changePasswordPage");
@@ -125,20 +123,24 @@ public class EmployeeController {
 	 	@RequestMapping("/LeaveRequest")
 		public String LeaveRequest(Model model) {
 			model.addAttribute("employeeLeave", new Employee_Leaves());
-			List<Leaves> list=this.employeeService.getAllLeaves();
-			System.out.println(list);
+		
 			model.addAttribute("LeavesList",this.employeeService.getAllLeaves());
 			return "leaveRequest";
 		}
 	 	@RequestMapping("/sendLeaveRequest")
 		public String sendLeaveRequest(@ModelAttribute("employeeLeave") Employee_Leaves employeeLeave,Model model) {
-	 	ModelAndView modelandView=new ModelAndView();
-	 	System.out.println("employeeLeave"+employeeLeave.getLeaves().getLeaveId());
 	 	employeeService.sendLeaveRequest(employeeLeave);
-	 	model.addAttribute("Success","Request Send Successfully");
+		model.addAttribute("LeavesList",this.employeeService.getAllLeaves());
+		model.addAttribute("Success","Request Send Successfully");
 			return "leaveRequest";
 		}
-	 	
+	 	@RequestMapping("/checkEmployeeLeaveStatus/{id}")
+	 	public String viewLeaveStatus(@PathVariable("id") int empId,Model model) 
+	 	{
+	 		List<Employee_Leaves> appliedLeaves=this.employeeService.getEmployeeLeavesById(empId);
+	 		model.addAttribute("LeaveStatus", appliedLeaves);
+	 		return "viewEmployeeLeaveStatus";
+	 	}
 	 /*	@RequestMapping("/employee1-1")
 		public String addEmployeeAndRole(@ModelAttribute("employee") EmployeeVO employeeVO1,Model model)
 		{

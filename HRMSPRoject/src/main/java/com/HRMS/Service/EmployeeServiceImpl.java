@@ -76,6 +76,14 @@ public class EmployeeServiceImpl implements EmployeeService{
 		
 	}
 
+
+	@Override
+	@Transactional
+	public List<Employee_Leaves> getEmployeeLeavesById(int empId) {
+		// TODO Auto-generated method stub
+		return employeeDao.getEmployeeLeavesById(empId);
+	}
+
 	
 
 

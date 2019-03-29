@@ -25,6 +25,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
 import org.springframework.web.servlet.ModelAndView;
@@ -40,6 +41,7 @@ import com.HRMS.Service.AdminService;
 import com.mysql.jdbc.Blob;
 
 @Controller
+@SessionAttributes("DropDownList")// to populate drop down list
 @RequestMapping("/Admin")
 public class AdminController {
 
@@ -51,9 +53,6 @@ public class AdminController {
 
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.addObject("listEmployees", this.adminService.listPersons());
-		Object[] departmentListToArray = this.adminService.listDepartments().toArray();
-		List<Object> departmentArrayToList = Arrays.asList(departmentListToArray);
-		modelAndView.addObject("DepartmentList", GetDropDownData(departmentArrayToList, "department"));
 		modelAndView.setViewName("viewAndUpdateEmployee");
 		return modelAndView;
 
@@ -68,9 +67,12 @@ public class AdminController {
 	@RequestMapping("/RegisterEmployee")
 	public String loadEmployeeRegisterPage(Model model) {
 		List<DepartmentVO> dep = this.adminService.listDepartments();
+		
+		// for populationg existing Employee ids in drop down add list to seession
 		Object[] departmentListToArray = this.adminService.listDepartments().toArray();
 		List<Object> departmentArrayToList = Arrays.asList(departmentListToArray);
-		model.addAttribute("DepartmentList", GetDropDownData(departmentArrayToList, "department"));
+		model.addAttribute("DropDownList", GetDropDownData(departmentArrayToList, "department"));
+		
 		model.addAttribute("employeeVO", new EmployeeVO());
 		return "EmployeeRegister";
 	}
@@ -128,9 +130,7 @@ public class AdminController {
 
 		model.addAttribute("listEmployees", this.adminService.listPersons());
 
-		Object[] departmentListToArray = this.adminService.listDepartments().toArray();
-		List<Object> departmentArrayToList = Arrays.asList(departmentListToArray);
-		model.addAttribute("DepartmentList", GetDropDownData(departmentArrayToList, "department"));
+		
 		return "viewAndUpdateEmployee";
 	}
 
@@ -161,16 +161,16 @@ public class AdminController {
 
 		response.getOutputStream().close();
 	}
-
+	
 	@RequestMapping(value = "/leaveHistoryRequest")
 	public ModelAndView LeaveHistory(@ModelAttribute("employeeLeave") Employee_Leaves employeeLeave, Model model) {
 		ModelAndView modelandView = new ModelAndView();
+		// for populationg existing Employee ids in drop down add list to seession
 		Object[] employeeListToArray = this.adminService.listPersons().toArray();
 		List<Object> employeeArrayToList = Arrays.asList(employeeListToArray);
-		model.addAttribute("EmployeeList", GetDropDownData(employeeArrayToList, "employeeId"));
 
 		modelandView.addObject("employeeLeave", new Employee_Leaves());
-
+		modelandView.addObject("DropDownList",GetDropDownData(employeeArrayToList, "employeeId"));
 		modelandView.setViewName("leaveHistoryRequest");
 		return modelandView;
 	}
@@ -181,15 +181,20 @@ public class AdminController {
 
 		ModelAndView modelandView = new ModelAndView();
 		List<Employee_Leaves> history = this.adminService.leaveHistory(id);
-		Object[] employeeListToArray = this.adminService.listPersons().toArray();
-		List<Object> employeeArrayToList = Arrays.asList(employeeListToArray);
-		model.addAttribute("EmployeeList", GetDropDownData(employeeArrayToList, "employeeId"));
-
+		
 		modelandView.addObject("history", history);
 		modelandView.setViewName("leaveHistoryRequest");
 		return modelandView;
 	}
-
+	@RequestMapping("/leaveHistoryStatus/{id}")
+	public ModelAndView sendLeaveHistoryStatus(@PathVariable("id") int Id,@ModelAttribute("employeeLeave") Employee_Leaves employeeLeave, Model model) {
+	ModelAndView modelandView =  new ModelAndView();
+	this.adminService.updateLeavesStatus(employeeLeave,Id);
+	modelandView.addObject("leaveStatusFlag","SuccessFully Send Leave Status");
+	modelandView.setViewName("leaveHistoryRequest");
+			return modelandView;
+	
+}
 	@RequestMapping(value = "/getProjectNameById/{id}", method = RequestMethod.GET)
 	public @ResponseBody String serachProjectNameById(@PathVariable("id") int id, Model model) {
 
@@ -229,7 +234,7 @@ public class AdminController {
 		List<Object> projectIdArrayToList = Arrays.asList(projectIdListToArray);
 		model.addAttribute("projectIdList", GetDropDownData(projectIdArrayToList, "projectId"));
 
-		//
+		
 		return "AssignProjectRequest";
 	}
 

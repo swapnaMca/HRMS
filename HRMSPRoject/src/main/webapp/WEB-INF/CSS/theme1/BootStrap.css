@@ -55,7 +55,23 @@ background-color: #a89bc7;
     .navbar-inverse{
     background-color: #225486;
     }
+    /*for Leaves collapse menu div demo*/
+   #collapseDive
+    {
     
+     background-color: #a89bc7;
+      height:30px;
+    }
+    .collapseLink
+    {
+    
+     width:200px;
+    }
+    #collapseDive:hover
+{
+	
+	background-color: #bcc5c6;
+}
   /* for header background
   
     .navbar-inverse

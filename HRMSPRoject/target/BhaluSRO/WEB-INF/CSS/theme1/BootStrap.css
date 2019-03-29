@@ -49,13 +49,23 @@ background-color: #a89bc7;
 }
  /*for body color*/
   .text-left{
-     background-color: #c2a4d2;
-     height: 450px;
+     background-color: #cfb8dc;
+     height: 1000px;
     }
     .navbar-inverse{
-    background-color: blue;
+    background-color: #225486;
     }
+    /*for Leaves collapse menu div demo*/
+   #collapseDive
+    {
     
+     background-color: #a89bc7;
+    }
+    .collapseLink
+    {
+     height:140px;
+     width:200px;
+    }
   /* for header background
   
     .navbar-inverse

@@ -7,6 +7,7 @@ import com.HRMS.Model.EmployeeVO;
 import com.HRMS.Model.EmployeeVOImage;
 import com.HRMS.Model.Employee_Leaves;
 import com.HRMS.Model.Employee_Projects;
+import com.HRMS.Model.Leaves;
 import com.HRMS.Model.Projects;
 import com.mysql.jdbc.Blob;
 
@@ -22,6 +23,7 @@ public interface AdminService {
 	public List<DepartmentVO> listDepartments();
 	/*Leaves*/
 	public List<Employee_Leaves> leaveHistory(int empId);
+	public void updateLeavesStatus(Employee_Leaves l,int employeeId);
 	/*Project Module Services*/
 	public void addProjects(Employee_Projects employeeProjects);
 	public List<Projects> projectsList();

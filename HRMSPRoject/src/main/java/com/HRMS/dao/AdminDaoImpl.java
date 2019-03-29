@@ -121,11 +121,14 @@ System.out.println("DAO....savesavesave");
 		return List;
 	}
 
-	public List<Employee_Leaves> leaveHistory(int id) {
+	public List<Employee_Leaves> leaveHistory(int id)
+	{
 		Session session = this.sessionFactory.getCurrentSession();
 		List<Employee_Leaves> leaveHistory=new ArrayList<Employee_Leaves>();
 		
-		List<Object[]> rows=session.createSQLQuery("select {l.*},{v.*} from hrms_employee_leaves as l join leaves v on l.leaveId=v.leaveId where empId="+id).addEntity("l",Employee_Leaves.class).addJoin("v","l.leaves").list();
+		List<Object[]> rows=session.createSQLQuery("select {l.*},{v.*} from hrms_employee_leaves as l join leaves v on l.leaveId=v.leaveId where empId="+id).
+				addEntity("l",Employee_Leaves.class).
+				addJoin("v","l.leaves").list();
 		
 		for (Object[] row : rows) {
 		    for(Object obj : row) {
@@ -134,13 +137,13 @@ System.out.println("DAO....savesavesave");
 		    System.out.println("\n");
 		}
 		for(Object[] row  :rows)
-{
+		{
 			Employee_Leaves e=  (Employee_Leaves)row[0] ;
 			Leaves leaves=(Leaves)row[1] ;
 			e.setLeaves(leaves);
 			leaveHistory.add(e);
 			
-}
+		}
 		
 		return leaveHistory;
 	}
@@ -158,6 +161,18 @@ System.out.println("DAO....savesavesave");
 		Session session=sessionFactory.getCurrentSession();
 		//List<Projects> List = session.createQuery("from Projects").list()//select photo from student where id=?"
 		return null;
+	}
+
+	@Override
+	public void updateLeavesStatus(Employee_Leaves l,int  employeeId) {
+		// TODO Auto-generated method stub
+		Session session=sessionFactory.getCurrentSession();
+
+		Employee_Leaves leaves=(Employee_Leaves) session.get(Employee_Leaves.class, employeeId);
+		
+		leaves.setLeave_status(l.getLeave_status());
+		session.update(leaves);
+		
 	}
 
 }

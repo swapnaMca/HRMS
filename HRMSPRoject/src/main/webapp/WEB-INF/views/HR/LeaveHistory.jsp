@@ -22,28 +22,21 @@
 <div id="addEmployeeDiv">
 <table align="center" >
 <tr>
-<td>Employee ID</td>
-<!-- <td><input type="text" name="id" cssClass="focus1"/></td> -->
-
+<td>Select Employee</td>
  <td><form:select path="id" cssClass="focus1" onchange="this.form.submit()">
  <form:option value="0" label="--- Select ---"/>
-<form:options items="${EmployeeList}"/>
+<form:options items="${DropDownList}"/>
 
 </form:select>  
 </td>
 <td><form:errors path="id" cssClass="error"/></td>
 </tr>
-<tr>
-</tr>
 
 
-<tr>
-<td><input type="submit"/></td>
-</tr>
 
 </table>
 </div>
-
+</form:form>
 
 <c:if test="${!empty history}">
 	<h3>Employees List</h3>
@@ -52,21 +45,21 @@
 <div class="pagination">
 	<table class="tg" align="center" border="1">
 	<tr class="employeetHeader">
-		
+		<th width="80">Id</th>
 		<th width="80">EmployeeId</th>
 		<th width="120">StartDate</th>
 		<th width="120">EndDate</th>
 		<th width="120">Total Days</th>
 		<th width="120">Leave Id</th>
 		<th width="120">Leave Name</th>
-		
-		
 		<th width="60">Status</th>
+			<th width="60"></th>
 		
 	</tr>
 	<c:forEach items="${history}" var="history">
 	
 		<tr class="employeeTR">
+		<td  width="80">${history.getId()}</td>
 			<td  width="80">${history.empId}</td>
 				<td width="120">${history.start_date}</td>
 				<td width="120">${history.end_date}</td>
@@ -74,21 +67,37 @@
 				<td width="120">${history.leaves.leaveId}</td>
 				<td width="120">${history.leaves.leaveName}</td>
 				<td>
+				<c:if test="${history.leave_status eq 'Pending'}">
+				
+				
+				<form:form action="${pageContext.request.contextPath}/Admin/leaveHistoryStatus/${history.getId()}"  modelAttribute="employeeLeave">
 				<form:select path="leave_status" cssClass="focus1" >
- <form:option value="NONE" label="--- Select ---"/>
+ <form:option value="Pending" label="Pending"/>
  <form:option value="Accept" label="Accept"/>
 <form:option value="Reject" label="Reject"/>
 
 </form:select>
-				</td>
-			<%-- <td width="60"><a href="<c:url value='/editEmployee/${history.empId}' />" >Edit</a></td>
-			<td width="60"><a href="<c:url value='/removeEmployee/${history.empId}' />" >Delete</a></td> --%>
+
+<td><input type="submit" value="Send"/></td>
+</form:form>
+</c:if>
+ <c:if test="${history.leave_status ne 'Pending'}">
+${history.leave_status}
+</c:if> 
+</td>
+				
+					
+			
 		</tr>
 	
 	</c:forEach>
 	</table>
+	
+	
 	</div>
 </c:if>
-</form:form>
+<%-- <c:if test="${! empty  history.leave_status}">
+<h1>${history.leave_status}</h1>
+</c:if> --%>
 </body>
 </html>

@@ -12,6 +12,8 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  <!-- for PopUp menu -->
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 <spring:url value="/resources/BootStrap.css" var="bootStrap" />
 <link href="${bootStrap}" rel="stylesheet" />
 </head>
@@ -37,10 +39,16 @@
   <spring:url value="/images" var="images" />
     <img src="${images}/editIcon.png" width="30" height="23" /> 
 </a>
-<spring:url value="/LeaveRequest" var="leaveRequest" htmlEscape="true" />
-	<a href="${leaveRequest}" class="btn btn-primary">Leave Request</a>
-
-
+<%-- <spring:url value="/LeaveRequest" var="leaveRequest" htmlEscape="true" />
+	<a href="${leaveRequest}" class="btn btn-primary">Leave Request</a> --%>
+ 
+<a href="#collapseDive" class="btn btn-primary" data-toggle="collapse">Leaves>></a>
+  <div  id="collapseDive" class="collapse">
+  <spring:url value="/LeaveRequest" var="leaveRequest" htmlEscape="true" />
+	<a href="${leaveRequest}" class="collapseLink">Leave Request</a>
   </div>
+  
+  </div>
+  
 </body>
 </html>

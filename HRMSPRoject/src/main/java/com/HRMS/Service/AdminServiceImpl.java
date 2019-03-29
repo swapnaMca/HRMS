@@ -11,6 +11,7 @@ import com.HRMS.Model.EmployeeVO;
 import com.HRMS.Model.EmployeeVOImage;
 import com.HRMS.Model.Employee_Leaves;
 import com.HRMS.Model.Employee_Projects;
+import com.HRMS.Model.Leaves;
 import com.HRMS.Model.Projects;
 import com.HRMS.dao.AdminDao;
 import com.HRMS.dao.EmployeeDao;
@@ -100,5 +101,11 @@ public class AdminServiceImpl implements AdminService{
 	public Blob getEmployeePhotoById(int id) {
 		// TODO Auto-generated method stub
 		return adminDao.getEmployeePhotoById(id);
+	}
+
+	@Override
+	public void updateLeavesStatus(Employee_Leaves l,int employeeId) {
+		adminDao.updateLeavesStatus(l,employeeId);
+		
 	}
 }

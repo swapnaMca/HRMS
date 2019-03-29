@@ -18,4 +18,6 @@ public interface EmployeeDao {
 	public void sendLeaveRequest(Employee_Leaves employeeLeave);
 	public List<Leaves> getAllLeaves();
 	public void updateEmployeeProfilePic(EmployeeVO_Login employeeLogin);
+	
+	public List<Employee_Leaves> getEmployeeLeavesById(int empId);
 }
