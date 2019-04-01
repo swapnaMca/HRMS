@@ -22,9 +22,6 @@ import org.hibernate.annotations.Parameter;
 import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
-@DynamicInsert
-@DynamicUpdate
-@SelectBeforeUpdate
 @Table(name="hrms_login")
 
 public class EmployeeVO_Login implements Serializable 

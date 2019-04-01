@@ -11,14 +11,27 @@
 <title>Insert title here</title>
 <spring:url value="/resources/main.css" var="mainCss" />
 <spring:url value="/resources/error.css" var="errCss" />
+
+<%-- <spring:url value="/resources/BootStrap.css" var="bootStrap" />
+
+<link href="${bootStrap}" rel="stylesheet" /> --%>
 <link href="${mainCss}" rel="stylesheet" />
 <link href="${errCss}" rel="stylesheet" />
-
+<!-- <style>
+.text-left{
+     background-color: #c2a4d2;
+     height: 1000px;
+    }
+    .navbar-inverse{
+    background-color: blue;
+    }
+</style> -->
 </head>
 <body>
-<div class="col-sm-8 text-left"> 
-<c:url var="addAction" value="/Admin/saveEmployeeImage" ></c:url>
-<form:form action="${addAction}" method="post" enctype="multipart/form-data" modelAttribute="employeeVOImage"  >
+
+<div class="col-sm-10 text-left"> 
+<c:url var="addAction" value="/Admin/saveEmployee" ></c:url>
+<form:form action="${addAction}"  method="post" enctype="multipart/form-data" modelAttribute="employeeVO">
 <div id="addEmployeeDiv">
 <table align="center" >
 <th align ="center" style="color:#0E4679">Employee Details</th>
@@ -39,12 +52,12 @@
 <td><form:errors path="phone" cssClass="error"/></td>
 </tr>
 <tr>
-<td>DOB</td><td><form:input path="dateOfBirth" cssClass="focus1"/></td>
+<td>DOB</td><td><form:input type="date" path="dateOfBirth" cssClass="focus1"/></td>
 <td><form:errors path="dateOfBirth" cssClass="error"/></td>
 </tr>
 
 <tr>
-<td>hire_date</td><td><form:input path="hire_date" cssClass="focus1"/></td>
+<td>hire_date</td><td><form:input type="date"  path="hire_date" cssClass="focus1"/></td>
 <td><form:errors path="hire_date" cssClass="error"/></td>
 </tr>
 <tr>
@@ -61,27 +74,34 @@
 <tr>
 <td>Department Id(*)</td><td><form:select path="department_id" cssClass="focus1">
  <form:option value="NONE" label="--- Select ---"/>
-<form:options items="${DepartmentList}"/>
+<form:options items="${DropDownList}"/>
 
 </form:select> </td>
 <td><form:errors path="department_id" cssClass="error"/></td>
 </tr>
+<br><br>
+<th align ="center" style="color:#0E4679">Employee Login</th>
+
+<tr>
+<td>UserName(*)</td><td><form:input path="employeeLogin.userName" cssClass="focus1"/></td>
+<td><form:errors path="employeeLogin.userName" cssClass="error"/></td>
+</tr>
+<tr>
+<td>Password</td><td><form:password path="employeeLogin.password" cssClass="focus1"/></td>
+<td><form:errors path="employeeLogin.password" cssClass="error"/></td>
+</tr>
+<tr>
+<td>Role</td><td><form:input path="employeeLogin.role" cssClass="focus1"/></td>
+<td><form:errors path="employeeLogin.role" cssClass="error"/></td>
+</tr>
 <tr><td>Upload Image</td>
  <td><input type="file" name="image" id="image"/></td>
-<%-- <td><form:input type="file" path="photo" id="photo" cssClass="focus1"/></td>  --%>
-
-
 </tr>
-<br><br>
-
 <tr>
 <td><input type="submit"/></td>
 
 </tr>
-<tr>
-<td>
-<a href="retrieveImage">ViewImage</a></td>
-</tr>
+
 </table>
 
 </div>	

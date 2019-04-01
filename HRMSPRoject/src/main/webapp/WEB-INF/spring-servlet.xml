@@ -99,7 +99,7 @@
 				<beans:value>com.HRMS.Model.Employee_Leaves</beans:value>
 				<beans:value>com.HRMS.Model.Projects</beans:value>
 				<beans:value>com.HRMS.Model.Employee_Projects</beans:value>
-			
+			<beans:value>com.HRMS.Model.EmployeeVO_Training</beans:value>
 			</beans:list>
 		</beans:property>
 		<beans:property name="hibernateProperties">

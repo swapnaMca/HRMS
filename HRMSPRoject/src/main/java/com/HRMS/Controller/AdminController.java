@@ -34,6 +34,7 @@ import com.HRMS.Model.DepartmentVO;
 import com.HRMS.Model.EmployeeVO;
 import com.HRMS.Model.EmployeeVOImage;
 import com.HRMS.Model.EmployeeVO_Login;
+import com.HRMS.Model.EmployeeVO_Training;
 import com.HRMS.Model.Employee_Leaves;
 import com.HRMS.Model.Employee_Projects;
 import com.HRMS.Model.Projects;
@@ -86,8 +87,18 @@ public class AdminController {
 		} else {
 			employeeVO.setEmployeeLogin(employeeVO.getEmployeeLogin());
 			employeeVO.getEmployeeLogin().setEmployeeVO(employeeVO);
-
 			employeeVO.getEmployeeLogin().setPhoto(photo.getBytes());
+
+			//System.out.println("employeeVO.getEmployeeTraining()"+employeeVO.getEmployeeTraining());
+			EmployeeVO_Training training=new EmployeeVO_Training();
+			training.setProjectReqt("HRMS");
+			training.setSkills("java,spring");
+			training.setTraining("new ?Tech");
+			training.setBond(2.5);
+			
+			employeeVO.setEmployeeTraining(training);
+			employeeVO.getEmployeeTraining().setEmployeeVO(employeeVO);
+			
 			this.adminService.addEmployee(employeeVO, "save");
 		}
 

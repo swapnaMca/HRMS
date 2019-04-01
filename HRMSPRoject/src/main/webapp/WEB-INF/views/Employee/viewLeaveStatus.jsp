@@ -38,7 +38,7 @@
 		<td  width="80">${LeaveStatus.getId()}</td>
 			<td  width="80">${LeaveStatus.empId}</td>
 				<td width="120">${LeaveStatus.start_date}</td>
-				<td width="120">${history.end_date}</td>
+				<td width="120">${LeaveStatus.end_date}</td>
 				<td width="120">${LeaveStatus.total_days}</td>
 				<td width="120">${LeaveStatus.leaves.leaveId}</td>
 				<td width="120">${LeaveStatus.leaves.leaveName}</td>

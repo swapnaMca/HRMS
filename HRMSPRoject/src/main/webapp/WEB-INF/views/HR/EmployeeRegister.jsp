@@ -7,33 +7,25 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
-<spring:url value="/resources/main.css" var="mainCss" />
-<spring:url value="/resources/error.css" var="errCss" />
-
-<%-- <spring:url value="/resources/BootStrap.css" var="bootStrap" />
-
-<link href="${bootStrap}" rel="stylesheet" /> --%>
-<link href="${mainCss}" rel="stylesheet" />
-<link href="${errCss}" rel="stylesheet" />
-<!-- <style>
-.text-left{
-     background-color: #c2a4d2;
-     height: 1000px;
-    }
-    .navbar-inverse{
-    background-color: blue;
-    }
-</style> -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="${pageContext.request.contextPath}/resources/Tabs.css"
+    rel="stylesheet">
+<script src="${pageContext.request.contextPath}/js/Tabs.js"></script>
 </head>
 <body>
 
-<div class="col-sm-10 text-left"> 
+
+<div class="tab">
+  <button class="tablinks" onclick="openTab(event, 'EmployeeDetails')" id="defaultOpen">Employee Details</button>
+  <button class="tablinks" onclick="openTab(event, 'Login')">Login</button>
+  <button class="tablinks" onclick="openTab(event, 'Training')">Training</button>
+</div>
 <c:url var="addAction" value="/Admin/saveEmployee" ></c:url>
 <form:form action="${addAction}"  method="post" enctype="multipart/form-data" modelAttribute="employeeVO">
-<div id="addEmployeeDiv">
+<div id="EmployeeDetails" class="tabcontent">
 <table align="center" >
+  <span onclick="this.parentElement.style.display='none'" class="topright">&times</span>
+
 <th align ="center" style="color:#0E4679">Employee Details</th>
 <tr>
 <!-- <td>Employee ID</td> --><td><form:hidden path="id" cssClass="focus1" /></td>
@@ -52,12 +44,12 @@
 <td><form:errors path="phone" cssClass="error"/></td>
 </tr>
 <tr>
-<td>DOB</td><td><form:input path="dateOfBirth" cssClass="focus1"/></td>
+<td>DOB</td><td><form:input type="date" path="dateOfBirth" cssClass="focus1"/></td>
 <td><form:errors path="dateOfBirth" cssClass="error"/></td>
 </tr>
 
 <tr>
-<td>hire_date</td><td><form:input path="hire_date" cssClass="focus1"/></td>
+<td>hire_date</td><td><form:input type="date"  path="hire_date" cssClass="focus1"/></td>
 <td><form:errors path="hire_date" cssClass="error"/></td>
 </tr>
 <tr>
@@ -79,10 +71,13 @@
 </form:select> </td>
 <td><form:errors path="department_id" cssClass="error"/></td>
 </tr>
-<br><br>
-<th align ="center" style="color:#0E4679">Employee Login</th>
+</table>
+</div>
 
-<tr>
+<div id="Login" class="tabcontent">
+<table align="center" >
+  <span onclick="this.parentElement.style.display='none'" class="topright">&times</span>
+  <tr>
 <td>UserName(*)</td><td><form:input path="employeeLogin.userName" cssClass="focus1"/></td>
 <td><form:errors path="employeeLogin.userName" cssClass="error"/></td>
 </tr>
@@ -97,15 +92,45 @@
 <tr><td>Upload Image</td>
  <td><input type="file" name="image" id="image"/></td>
 </tr>
-<tr>
-<td><input type="submit"/></td>
 
-</tr>
 
 </table>
 
-</div>	
-	</form:form>
-	</div>
+</div>
+
+<div id="Training" class="tabcontent">
+<table align="center" >
+  <span onclick="this.parentElement.style.display='none'" class="topright">&times</span>
+  <tr>
+ <td></td><td><form:hidden path="employeeTraining.Id" cssClass="focus1"/></td>
+<td><form:errors path="employeeTraining.Id" cssClass="error"/></td>
+ </tr>
+ <tr>
+ 
+ <td>Skills</td><td><form:input path="employeeTraining.skills" cssClass="focus1"/></td>
+<td><form:errors path="employeeTraining.skills" cssClass="error"/></td>
+ </tr>
+ 
+ <tr>
+ <td>Training</td><td><form:input path="employeeTraining.training" cssClass="focus1"/></td>
+<td><form:errors path="employeeTraining.training" cssClass="error"/></td>
+ </tr>
+  <tr>
+ <td>Bond</td><td><form:input path="employeeTraining.bond" cssClass="focus1"/></td>
+<td><form:errors path="employeeTraining.bond" cssClass="error"/></td>
+ </tr>
+ <tr>
+ <td>ProjectRequested</td><td><form:input path="employeeTraining.projectReqt" cssClass="focus1"/></td>
+<td><form:errors path="employeeTraining.projectReqt" cssClass="error"/></td>
+ </tr>
+ <tr>
+<td><input type="submit"/></td>
+
+</tr>
+ </table>
+</div>
+</form:form>
+
+   
 </body>
-</html>
+</html> 

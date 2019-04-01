@@ -13,4 +13,3 @@ function load(value){
 	  xhttp.open("GET", "/BhaluSRO/Admin/getProjectNameById/"+value, true);
 	  xhttp.send();
 }
-  

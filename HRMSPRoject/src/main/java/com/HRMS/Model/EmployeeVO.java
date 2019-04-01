@@ -4,6 +4,7 @@ package com.HRMS.Model;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.util.Date;
 import java.util.Set;
 
 import javax.validation.Valid;
@@ -20,18 +21,18 @@ import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 import org.hibernate.annotations.SelectBeforeUpdate;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.format.annotation.DateTimeFormat;
 
 
 @Entity
-@DynamicInsert
-@DynamicUpdate
-@SelectBeforeUpdate
 @Table(name="hrms_employee_details")
 public class EmployeeVO implements Serializable 
 {
@@ -56,11 +57,15 @@ public class EmployeeVO implements Serializable
 	
 	//@NotEmpty(message="is Required")
 	@Column(name="dateofbirth")
-	private String dateOfBirth;
+	@Temporal(TemporalType.DATE)
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	private Date dateOfBirth;
 	
 	//@NotEmpty(message="is Required")
 	@Column(name="hire_date")
-	private String hire_date;
+	@Temporal(TemporalType.DATE)
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	private Date hire_date;
 	
 	//@NotEmpty(message="is Required")
 	@Column(name="job_id")
@@ -77,9 +82,15 @@ public class EmployeeVO implements Serializable
 	@Column(name="DEPT_Id")
 	private String department_id;
 	
-	
+	/* Primary key column join*/
 	@OneToOne(mappedBy="employeeVO" ,cascade=CascadeType.ALL)
 	private EmployeeVO_Login employeeLogin;
+	
+	/*column join*/
+	@OneToOne(mappedBy="employeeVO" ,cascade=CascadeType.ALL)
+	private EmployeeVO_Training employeeTraining;
+	
+	
 	
 	public Integer getId() {
 		return id;
@@ -133,24 +144,8 @@ public class EmployeeVO implements Serializable
 	}
 
 
-	public String getDateOfBirth() {
-		return dateOfBirth;
-	}
 
 
-	public void setDateOfBirth(String dateOfBirth) {
-		this.dateOfBirth = dateOfBirth;
-	}
-
-
-	public String getHire_date() {
-		return hire_date;
-	}
-
-
-	public void setHire_date(String hire_date) {
-		this.hire_date = hire_date;
-	}
 
 
 	public Integer getJob_id() {
@@ -183,13 +178,39 @@ public class EmployeeVO implements Serializable
 	}
 
 
-	@Override
-	public String toString() {
-		return "EmployeeVO [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName
-				+ ", phone=" + phone + ", dateOfBirth=" + dateOfBirth + ", hire_date=" + hire_date + ", job_id="
-				+ job_id + ", salary=" + salary + ",department_id="
-				+ department_id + "]";
+	public EmployeeVO_Training getEmployeeTraining() {
+		return employeeTraining;
 	}
 
+
+	public void setEmployeeTraining(EmployeeVO_Training employeeTraining) {
+		this.employeeTraining = employeeTraining;
+	}
+
+
+	public Date getDateOfBirth() {
+		return dateOfBirth;
+	}
+
+
+	public void setDateOfBirth(Date dateOfBirth) {
+		this.dateOfBirth = dateOfBirth;
+	}
+
+
+	public Date getHire_date() {
+		return hire_date;
+	}
+
+
+	public void setHire_date(Date hire_date) {
+		this.hire_date = hire_date;
+	}
+
+
+	
+
+
+	
 
 }
