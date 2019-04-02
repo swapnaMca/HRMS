@@ -17,6 +17,14 @@
 </head>
 <body>
 <div class="btn-group-vertical">
+<spring:url value="/viewProfile/${login.id}/${login.employeeLogin.role}" var="viewProfile" htmlEscape="true" />
+<a href="${viewProfile}" class="btn btn-primary">View Profile</a>
+   <spring:url value="/LoadChangePassword/${login.employeeLogin.role}" var="changePassword" htmlEscape="true" />
+ <a href="${changePassword}" class="btn btn-primary">EditProfile
+  <spring:url value="/images" var="images" />
+    <img src="${images}/editIcon.png" width="30" height="23" /> 
+</a>
+
 <spring:url value="/Admin/RegisterEmployee" var="RegisterEmployee" htmlEscape="true" />
 <a href="${RegisterEmployee}" class="btn btn-primary">Add Employee</a>
 <spring:url value="/Admin/viewAllEmployees" var="viewAllEmployees" htmlEscape="true" />
@@ -24,8 +32,7 @@
 
 <spring:url value="/Admin/leaveHistoryRequest" var="leaveHistory" htmlEscape="true" />
 <a href="${leaveHistory}" class="btn btn-primary">Leave History</a>
-   <spring:url value="/Admin/RegisterImageEmployee" var="RegisterEmployee" htmlEscape="true" />
-<a href="${RegisterEmployee}" class="btn btn-primary">Add EmployeeRegister</a>
+   
   </div>
 </body>
 </html>

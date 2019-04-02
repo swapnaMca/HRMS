@@ -19,9 +19,9 @@
 <body>
 
 <div class="btn-group-vertical">
-<spring:url value="/viewProfile/${login.id}" var="viewProfile" htmlEscape="true" />
+<spring:url value="/viewProfile/${login.id}/${login.employeeLogin.role}" var="viewProfile" htmlEscape="true" />
 <a href="${viewProfile}" class="btn btn-primary">View Profile</a>
-   <spring:url value="/LoadChangePassword" var="changePassword" htmlEscape="true" />
+   <spring:url value="/LoadChangePassword/${login.employeeLogin.role}" var="changePassword" htmlEscape="true" />
  <a href="${changePassword}" class="btn btn-primary">EditProfile
   <spring:url value="/images" var="images" />
     <img src="${images}/editIcon.png" width="30" height="23" /> 

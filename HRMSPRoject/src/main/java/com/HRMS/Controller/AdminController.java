@@ -64,7 +64,11 @@ public class AdminController {
 
 		return "HRHomePage";
 	}
-
+	@RequestMapping("/viewAdminProfile/{id}")
+	  public String getEmployeeById(@PathVariable("id") int id,@ModelAttribute("user") EmployeeVO employeeVO, Model model){
+	
+	        return "viewHRProfile";
+  }
 	@RequestMapping("/RegisterEmployee")
 	public String loadEmployeeRegisterPage(Model model) {
 		List<DepartmentVO> dep = this.adminService.listDepartments();
@@ -90,19 +94,16 @@ public class AdminController {
 			employeeVO.getEmployeeLogin().setPhoto(photo.getBytes());
 
 			//System.out.println("employeeVO.getEmployeeTraining()"+employeeVO.getEmployeeTraining());
-			EmployeeVO_Training training=new EmployeeVO_Training();
-			training.setProjectReqt("HRMS");
-			training.setSkills("java,spring");
-			training.setTraining("new ?Tech");
-			training.setBond(2.5);
 			
-			employeeVO.setEmployeeTraining(training);
+			
+			employeeVO.setEmployeeTraining(employeeVO.getEmployeeTraining());
 			employeeVO.getEmployeeTraining().setEmployeeVO(employeeVO);
 			
 			this.adminService.addEmployee(employeeVO, "save");
+			
 		}
 
-		return "redirect:/Admin/getEmployeesData";
+		return "redirect:/Admin/RegisterEmployee";
 	}
 
 	@RequestMapping(value = { "/updateEmployee" })
@@ -161,7 +162,8 @@ public class AdminController {
 	}
 
 	@RequestMapping(value = "/getEmployeePhoto/{id}")
-	public void getEmployeeImage(HttpServletResponse response, @PathVariable("id") int id) throws Exception {
+	public void getEmployeeImage(HttpServletResponse response, @PathVariable("id") int id) throws Exception 
+	{
 		response.setContentType("image/jpeg");
 
 		EmployeeVO emp = this.adminService.getEmployeeById(id);
@@ -206,16 +208,7 @@ public class AdminController {
 			return modelandView;
 	
 }
-	@RequestMapping(value = "/getProjectNameById/{id}", method = RequestMethod.GET)
-	public @ResponseBody String serachProjectNameById(@PathVariable("id") int id, Model model) {
-
-		System.out.println("@PathVariable" + id);
-
-		List<Projects> projectList = this.adminService.projectsList();
-		String projectName = projectList.get(id - 1).getProjectName();
-
-		return projectName;
-	}
+	
 
 	/* Project Module */
 	@RequestMapping("/Projects")
@@ -248,7 +241,17 @@ public class AdminController {
 		
 		return "AssignProjectRequest";
 	}
+	
+	@RequestMapping(value = "/getProjectNameById/{id}", method = RequestMethod.GET)
+	public @ResponseBody String serachProjectNameById(@PathVariable("id") int id, Model model) {
 
+		System.out.println("@PathVariable" + id);
+
+		List<Projects> projectList = this.adminService.projectsList();
+		String projectName = projectList.get(id - 1).getProjectName();
+
+		return projectName;
+	}
 	@RequestMapping("/saveProject")
 	public String saveProject(@Valid @ModelAttribute("employeeProjects") Employee_Projects employeeProjects,
 			BindingResult result, Model model) {

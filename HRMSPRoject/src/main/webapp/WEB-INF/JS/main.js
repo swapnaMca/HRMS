@@ -10,6 +10,12 @@ function load(value){
 	    projectName.value=this.response;
 	    }
 	  };
-	  xhttp.open("GET", "/BhaluSRO/Admin/getProjectNameById/"+value, true);
+	  xhttp.open("GET", "/HRMSProject/Admin/getProjectNameById/"+value, true);
 	  xhttp.send();
+}
+// form submit for profile pic change for employee and admin
+
+function changeProfilePic()
+{
+	document.getElementById("ProfilePicChangeForm").submit();
 }

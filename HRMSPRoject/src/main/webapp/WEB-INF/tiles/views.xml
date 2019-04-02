@@ -11,6 +11,13 @@
 		<put-attribute name="header" value="/WEB-INF/jsps/Admin/HRHeader.jsp" />
 		<put-attribute name="body" value="/WEB-INF/jsps/Admin/HRHomePage.jsp" />
 	</definition>
+	<definition name="viewHRProfile" extends="DefaultTemplate">
+		<put-attribute name="title" value="Welcome" />
+		<put-attribute name="menu" value="/WEB-INF/jsps/Admin/HRMenu.jsp" />
+		<put-attribute name="header" value="/WEB-INF/jsps/Admin/HRHeader.jsp" />
+		<put-attribute name="body" value="/WEB-INF/views/Employee/EmployeeProfile.jsp" />
+	</definition>
+	
 
 	<definition name="EmployeeRegister" extends="DefaultTemplate">
 		<put-attribute name="title" value="Welcome" />
@@ -36,6 +43,27 @@
 		<put-attribute name="body"
 			value="/WEB-INF/views/HR/viewAndUpdateEmployee.jsp" />
 	</definition>
+	<definition name="HRchangePasswordPage" extends="DefaultTemplate">
+<put-attribute name="title" value="Welcome" />
+		<put-attribute name="menu" value="/WEB-INF/jsps/Admin/HRMenu.jsp" />
+		<put-attribute name="header" value="/WEB-INF/jsps/Admin/HRHeader.jsp" />
+	<put-attribute name="body"
+			value="/WEB-INF/views/Employee/ChangePassword.jsp" />
+</definition>
+<definition name="HRchangeProfilePic" extends="DefaultTemplate">
+<put-attribute name="title" value="Welcome" />
+		<put-attribute name="menu" value="/WEB-INF/jsps/Admin/HRMenu.jsp" />
+		<put-attribute name="header" value="/WEB-INF/jsps/Admin/HRHeader.jsp" />
+	<put-attribute name="body"
+			value="/WEB-INF/views/Employee/ChangeProfilePic.jsp" />
+</definition>
+<definition name="HRchangePasswordPage" extends="DefaultTemplate">
+<put-attribute name="title" value="Welcome" />
+		<put-attribute name="menu" value="/WEB-INF/jsps/Admin/HRMenu.jsp" />
+		<put-attribute name="header" value="/WEB-INF/jsps/Admin/HRHeader.jsp" />
+	<put-attribute name="body"
+			value="/WEB-INF/views/Employee/ChangePassword.jsp" />
+</definition>
 <!-- Project Module for HR -->
  <definition name="ProjectModule" extends="DefaultTemplate">
 <put-attribute name="menu" value="/WEB-INF/jsps/Projects/ProjectMenu.jsp" />
@@ -50,6 +78,7 @@
 	<put-attribute name="body"
 			value="/WEB-INF/views/Projects/RegisterProjectsPage.jsp" />
 </definition> 
+
 
 <!-- For Employee HomePage after Login -->
 

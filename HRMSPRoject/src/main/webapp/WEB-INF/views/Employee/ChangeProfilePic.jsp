@@ -19,7 +19,7 @@
 
 <div class="col-sm-8 text-left"> 
 
-<form:form action="${pageContext.request.contextPath}/UpdateProfilePic/${login.id}"  method="post" enctype="multipart/form-data" modelAttribute="employeeLogin">
+<form:form action="${pageContext.request.contextPath}/UpdateProfilePic/${login.id}/${login.employeeLogin.role}"  method="post" enctype="multipart/form-data" modelAttribute="employeeLogin">
 <div id="addEmployeeDiv">
 <table align="center" >
 <tr>

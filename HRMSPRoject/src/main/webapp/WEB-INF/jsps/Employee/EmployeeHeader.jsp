@@ -11,12 +11,7 @@
   
 <spring:url value="/resources/BootStrap.css" var="bootStrap" />
 <link href="${bootStrap}" rel="stylesheet" />
-<script>
-function changeProfilePic()
-{
-	document.getElementById("ProfilePicChangeForm").submit();
-}
-</script>
+   <script src="${pageContext.request.contextPath}/js/main.js"></script>
 </head>
 <body>
  <ul class="nav navbar-nav">
@@ -33,7 +28,7 @@ function changeProfilePic()
  <c:if test="${!empty userImage}">
  <c:url var="changeProfilePic" value="/changeProfilePic"></c:url>
  
-  <li><form:form id="ProfilePicChangeForm" action="${changeProfilePic}" modelAttribute="employeeLogin"><img id="ProfilePic" width="100" height="100" src="data:image/jpeg;base64,${userImage}"  style="cursor: pointer;" onclick="changeProfilePic()"/>
+  <li><form:form id="ProfilePicChangeForm" action="${changeProfilePic}/user" modelAttribute="employeeLogin"><img id="ProfilePic" width="100" height="100" src="data:image/jpeg;base64,${userImage}"  style="cursor: pointer;" onclick="changeProfilePic()"/>
  </form:form></li>
  
  

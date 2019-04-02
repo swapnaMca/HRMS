@@ -10,7 +10,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link href="${pageContext.request.contextPath}/resources/Tabs.css"
     rel="stylesheet">
-<script src="${pageContext.request.contextPath}/js/Tabs.js"></script>
+
 </head>
 <body>
 
@@ -131,6 +131,6 @@
 </div>
 </form:form>
 
-   
+   <script src="${pageContext.request.contextPath}/js/Tabs.js"></script>
 </body>
 </html> 

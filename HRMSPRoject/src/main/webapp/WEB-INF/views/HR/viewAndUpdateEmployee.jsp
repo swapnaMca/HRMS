@@ -18,7 +18,7 @@
 <link href="${pageContext.request.contextPath}/resources/Tabs.css"
     rel="stylesheet">
 
-<script src="${pageContext.request.contextPath}/js/Tabs.js"></script>
+
 </head>
 <body>
 
@@ -138,6 +138,7 @@
  </table>
 </div>
 </form:form>
+ <script src="${pageContext.request.contextPath}/js/Tabs.js"></script>
 <c:if test="${!empty listEmployees}">
 	<h3>Employees List</h3>
 

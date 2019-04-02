@@ -26,7 +26,7 @@
         <li class="active"><spring:url value="/Admin/Projects" var="Projects" htmlEscape="true" />
         <a href="${Projects}">Projects</a>
         </li>
-        <li><a href="#" >Contact</a></li>
+      
         </ul>
       <ul class="nav navbar-nav navbar-right">
      
