@@ -17,24 +17,38 @@
 </head>
 <body>
 
-<c:url value="/Admin/LeaveHistoryById" var="searchLeaveHistoryById" ></c:url>
 
-<form:form id="leavesForm" action="${searchLeaveHistoryById}"  modelAttribute="employeeLeave">
+<form:form action="${pageContext.request.contextPath}/Admin/searchLeaveHistoryByDate"  modelAttribute="employeeLeave">
 <div id="addEmployeeDiv">
 <table align="center" >
 <tr>
-<td>Select Employee</td>
- <td><form:select path="id" cssClass="focus1" onchange="loadLeavesById('leavesForm')">
- <form:option value="0" label="--- Select ---"/>
-<form:options items="${DropDownList}"/>
-
-</form:select>  
+<td>From Date*</td>
+ <td><form:input type="date" path="start_date" cssClass="focus1"></form:input>  
 </td>
-<td><form:errors path="id" cssClass="error"/></td>
+<td><form:errors path="start_date" cssClass="error"/></td>
 </tr>
 
+<tr>
+<td>End Date *</td>
+ <td><form:input type="date" path="end_date" cssClass="focus1"></form:input>  
+</td>
+<td><form:errors path="end_date" cssClass="error"/></td>
+</tr>
+<tr>
+<td>Select status</td>
+ <td><form:select path="leave_status" cssClass="focus1" >
+ <form:option value="All" label="All"/>
+ <form:option value="Pending" label="Pending"/>
+ <form:option value="Accept" label="Accept"/>
+<form:option value="Reject" label="Reject"/>
 
-
+</form:select>
+</td>
+<td><form:errors path="leave_status" cssClass="error"/></td>
+</tr>
+<tr>
+<td><input type="submit" value="Search"/></td>
+</tr>
 </table>
 </div>
 </form:form>
@@ -71,8 +85,9 @@
 				<c:if test="${history.leave_status eq 'Pending'}">
 				
 				
-				<form:form action="${pageContext.request.contextPath}/Admin/leaveHistoryStatus/${history.getId()}"  modelAttribute="employeeLeave">
+				<form:form action="${pageContext.request.contextPath}/Admin/leaveHistoryStatus/${history.getId()}/ByDate"  modelAttribute="employeeLeave">
 				<form:select path="leave_status" cssClass="focus1" >
+				
  <form:option value="Pending" label="Pending"/>
  <form:option value="Accept" label="Accept"/>
 <form:option value="Reject" label="Reject"/>

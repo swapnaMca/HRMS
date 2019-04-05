@@ -2,7 +2,21 @@
     .navbar {
       margin-bottom: 0;
       border-radius: 0;
+        position: sticky;
+  		top: 0;
+ 		 z-index: 10;
     }
+    /*To change text color of header*/
+   /*  .navbar-inverse .navbar-nav>li>a {
+    color: #e61e1e;
+} */
+/* .navbar-inverse .navbar-nav>.active>a, 
+.navbar-inverse .navbar-nav>.active>a:focus, 
+.navbar-inverse .navbar-nav>.active>a:hover {
+    color: #E91E63;
+    background-color: red;
+} */
+    
     
     /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
     .row.content {height: 1000px}
@@ -53,7 +67,7 @@ background-color: #a89bc7;
      height: 1000px;
     }
     .navbar-inverse{
-    background-color: #225486;
+    background-color: #3279c0;
     }
     /*for Leaves collapse menu div demo*/
    #collapseDive
@@ -72,25 +86,52 @@ background-color: #a89bc7;
 	
 	background-color: #bcc5c6;
 }
-  /* for header background
-  
-    .navbar-inverse
-    {
-      background-color: #cbacd7;
-    }
-      li
-    {
-    background-color: #7d6b9a;
-	border: 1px ridge #7d6b9a;
-	color: black;
-    }
-    li:hover
-    {
-     background-color: #800080;
-    } */
-    
-    /*for HR SideMenu*/
-    /* .navbar-inverse
-    {
-     background-color: #a698c7;
-    } */
+.li:hover
+{
+	background-color: #bcc5c6;
+	
+}
+
+/*For drop down list Of HRHeader of Employee*/
+ 
+.dropdown .dropbtn {
+  font-size: 16px;  
+  border: none;
+  outline: none;
+  color: #ffffff;
+  padding: 14px 16px;
+  background-color: inherit;
+  font-family: inherit;
+  margin: 0;
+}
+
+.nav a:hover, .dropdown:hover .dropbtn {
+  background-color: #204e7b;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #d2d2d2;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  float: none;
+  color: #204e7b;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+.dropdown-content a:hover {
+  background-color: #ff8c55;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+} 
+ 

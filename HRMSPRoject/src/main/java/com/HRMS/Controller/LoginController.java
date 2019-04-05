@@ -91,7 +91,7 @@ public class LoginController {
 			if(employee.getEmployeeLogin().getRole().equalsIgnoreCase(HRMSRole.ADMIN.toString()))
 			{
 				modelAndView.setViewName("HRHomePage");
-
+				
 			}
 			else
 			{

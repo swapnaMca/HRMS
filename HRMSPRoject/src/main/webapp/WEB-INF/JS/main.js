@@ -19,3 +19,8 @@ function changeProfilePic()
 {
 	document.getElementById("ProfilePicChangeForm").submit();
 }
+function loadLeavesById(formId)
+{
+	document.getElementById(formId).submit();
+
+}

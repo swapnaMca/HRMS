@@ -1,11 +1,14 @@
 package com.HRMS.dao;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.apache.log4j.Logger;
+import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -173,6 +176,24 @@ System.out.println("DAO....savesavesave");
 		leaves.setLeave_status(l.getLeave_status());
 		session.update(leaves);
 		
+	}
+
+	@Override
+	public List<Employee_Leaves> leaveHistoryBydate(Date fromDate, Date toDate, String Status) {
+		// TODO Auto-generated method stub
+		//https://www.mkyong.com/hibernate/hibernate-criteria-examples/
+		List<Employee_Leaves> leavesList;
+		Session session=sessionFactory.getCurrentSession();
+		Criteria criteria=session.createCriteria(Employee_Leaves.class);
+		criteria.add(Restrictions.between("start_date",fromDate,toDate));	//order based on start_date
+		if(!Status.equalsIgnoreCase("All"))
+		{
+			criteria.add(Restrictions.eq("leave_status", Status));
+		}
+		
+		
+		leavesList=criteria.list();
+		return leavesList;
 	}
 
 }

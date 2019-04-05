@@ -67,14 +67,14 @@
 <!-- Project Module for HR -->
  <definition name="ProjectModule" extends="DefaultTemplate">
 <put-attribute name="menu" value="/WEB-INF/jsps/Projects/ProjectMenu.jsp" />
-<put-attribute name="header" value="/WEB-INF/jsps/Projects/ProjectHeader.jsp" />
+<put-attribute name="header" value="/WEB-INF/jsps/Admin/HRHeader.jsp" />
 	<put-attribute name="body"
 			value="/WEB-INF/jsps/Projects/ProjectHomePage.jsp" />
 </definition>
 
 <definition name="AssignProjectRequest" extends="DefaultTemplate">
 <put-attribute name="menu" value="/WEB-INF/jsps/Projects/ProjectMenu.jsp" />
-<put-attribute name="header" value="/WEB-INF/jsps/Projects/ProjectHeader.jsp" />
+<put-attribute name="header" value="/WEB-INF/jsps/Admin/HRHeader.jsp" />
 	<put-attribute name="body"
 			value="/WEB-INF/views/Projects/RegisterProjectsPage.jsp" />
 </definition> 
@@ -118,25 +118,31 @@
 	<put-attribute name="body"
 			value="/WEB-INF/views/HR/LeaveHistory.jsp" />
 </definition>
+<definition name="leaveHistoryRequestByDate" extends="DefaultTemplate">
+<put-attribute name="menu" value="/WEB-INF/jsps/Admin/HRMenu.jsp" />
+<put-attribute name="header" value="/WEB-INF/jsps/Admin/HRHeader.jsp" />
+	<put-attribute name="body"
+			value="/WEB-INF/views/HR/LeaveList.jsp" />
+</definition>
 <!-- SETUP MODULE -->
 <!-- Project Module -->
 <definition name="setupHomePage" extends="DefaultTemplate">
 <put-attribute name="menu" value="/WEB-INF/jsps/Setup/SetupMenu.jsp" />
-<put-attribute name="header" value="/WEB-INF/jsps/Setup/SetupHeader.jsp" />
+<put-attribute name="header" value="/WEB-INF/jsps/Admin/HRHeader.jsp" />
 	<put-attribute name="body"
 			value="/WEB-INF/jsps/Setup/setupHomePage.jsp" />
 </definition>
 <!-- Adding Project -->
 <definition name="AddProjectRequest" extends="DefaultTemplate">
 <put-attribute name="menu" value="/WEB-INF/jsps/Setup/SetupMenu.jsp" />
-<put-attribute name="header" value="/WEB-INF/jsps/Setup/SetupHeader.jsp" />
+<put-attribute name="header" value="/WEB-INF/jsps/Admin/HRHeader.jsp" />
 	<put-attribute name="body"
 			value="/WEB-INF/views/Setup/AddProjects.jsp" />
 </definition>
 <!-- Adding Department -->
 <definition name="Department-form" extends="DefaultTemplate">
 <put-attribute name="menu" value="/WEB-INF/jsps/Setup/SetupMenu.jsp" />
-<put-attribute name="header" value="/WEB-INF/jsps/Setup/SetupHeader.jsp" />
+<put-attribute name="header" value="/WEB-INF/jsps/Admin/HRHeader.jsp" />
 		<put-attribute name="body"
 			value="/WEB-INF/views/Setup/Department-form.jsp" />
 </definition>

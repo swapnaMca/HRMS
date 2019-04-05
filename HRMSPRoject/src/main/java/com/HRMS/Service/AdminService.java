@@ -1,5 +1,6 @@
 package com.HRMS.Service;
 
+import java.util.Date;
 import java.util.List;
 
 import com.HRMS.Model.DepartmentVO;
@@ -23,6 +24,7 @@ public interface AdminService {
 	public List<DepartmentVO> listDepartments();
 	/*Leaves*/
 	public List<Employee_Leaves> leaveHistory(int empId);
+	public List<Employee_Leaves> leaveHistoryBydate(Date fromDate,Date toDate,String Status);
 	public void updateLeavesStatus(Employee_Leaves l,int employeeId);
 	/*Project Module Services*/
 	public void addProjects(Employee_Projects employeeProjects);

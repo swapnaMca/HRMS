@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans:beans xmlns="http://www.springframework.org/schema/mvc"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:beans="http://www.springframework.org/schema/beans"
-	xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	 xmlns:beans="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context" 
+	xmlns:tx="http://www.springframework.org/schema/tx"
 	xsi:schemaLocation="http://www.springframework.org/schema/mvc 
 	http://www.springframework.org/schema/mvc/spring-mvc.xsd
 	http://www.springframework.org/schema/beans 
@@ -99,7 +101,8 @@
 				<beans:value>com.HRMS.Model.Employee_Leaves</beans:value>
 				<beans:value>com.HRMS.Model.Projects</beans:value>
 				<beans:value>com.HRMS.Model.Employee_Projects</beans:value>
-			<beans:value>com.HRMS.Model.EmployeeVO_Training</beans:value>
+				<beans:value>com.HRMS.Model.EmployeeVO_Training</beans:value>
+				<beans:value>com.HRMS.Model.Hrms_News</beans:value>
 			</beans:list>
 		</beans:property>
 		<beans:property name="hibernateProperties">

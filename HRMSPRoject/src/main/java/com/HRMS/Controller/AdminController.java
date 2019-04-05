@@ -175,35 +175,63 @@ public class AdminController {
 		response.getOutputStream().close();
 	}
 	
-	@RequestMapping(value = "/leaveHistoryRequest")
-	public ModelAndView LeaveHistory(@ModelAttribute("employeeLeave") Employee_Leaves employeeLeave, Model model) {
+	@RequestMapping(value = {"/leaveHistoryRequestById","/leaveHistoryRequestByDate"})
+	public ModelAndView LeaveHistoryById(@ModelAttribute("employeeLeave") Employee_Leaves employeeLeave,
+			Model model, HttpServletRequest request) {
 		ModelAndView modelandView = new ModelAndView();
 		// for populationg existing Employee ids in drop down add list to seession
 		Object[] employeeListToArray = this.adminService.listPersons().toArray();
 		List<Object> employeeArrayToList = Arrays.asList(employeeListToArray);
-
+		System.out.println("searchLeaveHistoryByIdsearchLeaveHistoryById");
+		String requestUrl = request.getServletPath();
+		
 		modelandView.addObject("employeeLeave", new Employee_Leaves());
 		modelandView.addObject("DropDownList",GetDropDownData(employeeArrayToList, "employeeId"));
+		if(requestUrl.equals("/Admin/leaveHistoryRequestById"))
 		modelandView.setViewName("leaveHistoryRequest");
+		else
+			modelandView.setViewName("leaveHistoryRequestByDate");
 		return modelandView;
 	}
+	
 
-	@RequestMapping("/searchLeaveHistory")
+	@RequestMapping("/LeaveHistoryById")
 	public ModelAndView findLeaveHistory(@RequestParam("id") int id,
 			@ModelAttribute("employeeLeave") Employee_Leaves employeeLeave, Model model) {
 
 		ModelAndView modelandView = new ModelAndView();
 		List<Employee_Leaves> history = this.adminService.leaveHistory(id);
-		
 		modelandView.addObject("history", history);
 		modelandView.setViewName("leaveHistoryRequest");
 		return modelandView;
 	}
-	@RequestMapping("/leaveHistoryStatus/{id}")
-	public ModelAndView sendLeaveHistoryStatus(@PathVariable("id") int Id,@ModelAttribute("employeeLeave") Employee_Leaves employeeLeave, Model model) {
+	@RequestMapping("/searchLeaveHistoryByDate")
+	public ModelAndView findLeaveHistoryByDate(
+			@ModelAttribute("employeeLeave") Employee_Leaves employeeLeave, Model model) {
+
+		ModelAndView modelandView = new ModelAndView();
+		String fromDate=employeeLeave.getStart_date().toString();
+		String toDate=employeeLeave.getEnd_date().toString();
+		String status=employeeLeave.getLeave_status();
+		
+		System.out.println("fromDate"+fromDate+">>>>>>"+employeeLeave.getStart_date());
+		List<Employee_Leaves> history = this.adminService.leaveHistoryBydate(employeeLeave.getStart_date(),employeeLeave.getEnd_date(),status);
+		modelandView.addObject("history", history);
+		modelandView.setViewName("leaveHistoryRequestByDate");
+		return modelandView;
+	}
+	@RequestMapping("/leaveHistoryStatus/{id}/{SearchType}")
+	public ModelAndView sendLeaveHistoryStatus(@PathVariable("id") int Id,
+			@PathVariable("SearchType") String SearchType,
+			@ModelAttribute("employeeLeave") Employee_Leaves employeeLeave, 
+			Model model,HttpServletRequest request) {
 	ModelAndView modelandView =  new ModelAndView();
 	this.adminService.updateLeavesStatus(employeeLeave,Id);
 	modelandView.addObject("leaveStatusFlag","SuccessFully Send Leave Status");
+	System.out.println("leaveHistoryStatus))))))))))"+request.getServletPath());
+if(SearchType.equalsIgnoreCase("ByDate"))
+	modelandView.setViewName("leaveHistoryRequestByDate");
+else
 	modelandView.setViewName("leaveHistoryRequest");
 			return modelandView;
 	

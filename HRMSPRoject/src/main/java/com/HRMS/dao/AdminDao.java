@@ -1,5 +1,6 @@
 package com.HRMS.dao;
 
+import java.util.Date;
 import java.util.List;
 
 import com.HRMS.Model.DepartmentVO;
@@ -24,6 +25,8 @@ public interface AdminDao {
 	public List<DepartmentVO> listDepartments();
 	
 	public List<Employee_Leaves> leaveHistory(int empId);
+	public List<Employee_Leaves> leaveHistoryBydate(Date fromDate,Date toDate,String Status);
+
 	public void updateLeavesStatus(Employee_Leaves l,int employeeId);
 	/*Project Module */
 	public void addProjects(Employee_Projects employeeProjects);

@@ -18,7 +18,34 @@
    <li><a href="#">Home</a></li>
        
         <li><a href="#">Projects</a></li>
-        <li><a href="#">Contact</a></li>
+        <li><div class="dropdown">
+				<button class="dropbtn">
+					Profile <i class="fa fa-caret-down"></i>
+				</button>
+				<div class="dropdown-content">
+					<spring:url value="/viewProfile/${login.id}/${login.employeeLogin.role}" var="viewProfile" htmlEscape="true" />
+<a href="${viewProfile}" >View Profile</a>
+   <spring:url value="/LoadChangePassword/${login.employeeLogin.role}" var="changePassword" htmlEscape="true" />
+ <a href="${changePassword}" >EditProfile
+  <spring:url value="/images" var="images" />
+    <img src="${images}/editIcon.png" width="30" height="23" /> 
+    </a>
+				</div>
+			</div>
+			</li>
+        <li>
+			<div class="dropdown">
+				<button class="dropbtn">
+					Leaves <i class="fa fa-caret-down"></i>
+				</button>
+				<div class="dropdown-content">
+					 <spring:url value="/LeaveRequest" var="leaveRequest" htmlEscape="true" />
+	<a href="${leaveRequest}" >Apply Leave</a>
+					<spring:url value="/checkEmployeeLeaveStatus/${login.id}" var="checkEmployeeLeaveStatus" htmlEscape="true" />
+	<a href="${checkEmployeeLeaveStatus}" >Visit LeaveStatus</a>
+				</div>
+			</div>
+		</li>
         </ul>
       <ul class="nav navbar-nav navbar-right">
      
@@ -28,7 +55,7 @@
  <c:if test="${!empty userImage}">
  <c:url var="changeProfilePic" value="/changeProfilePic"></c:url>
  
-  <li><form:form id="ProfilePicChangeForm" action="${changeProfilePic}/user" modelAttribute="employeeLogin"><img id="ProfilePic" width="100" height="100" src="data:image/jpeg;base64,${userImage}"  style="cursor: pointer;" onclick="changeProfilePic()"/>
+  <li><form:form id="ProfilePicChangeForm" action="${changeProfilePic}/user" modelAttribute="employeeLogin"><img id="ProfilePic" width="100" height="100" src="data:image/jpeg;base64,${userImage}"  style="border:1px solid cyan ;cursor: pointer;" onclick="changeProfilePic()" class="img-circle"/>
  </form:form></li>
  
  

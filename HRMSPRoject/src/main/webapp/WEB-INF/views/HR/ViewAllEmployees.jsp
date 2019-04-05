@@ -54,9 +54,9 @@
 				<td width="120">${employee.department_id}</td>
 				<td width="120">${employee.employeeLogin.role}</td><%-- <img src="data:image/jpeg;base64,${userImage}" /> --%>
 	
- <td>
+ <td  width="100">
 
- 				 <img width="100" height="100" src='${pageContext.request.contextPath}/Admin/getEmployeePhoto/${employee.id}'/>
+ 				 <img width="100" height="100" style="border:3px solid #0E4679 ;cursor: pointer;" src='${pageContext.request.contextPath}/Admin/getEmployeePhoto/${employee.id}' class="img-circle"/>
  
  
  </td>

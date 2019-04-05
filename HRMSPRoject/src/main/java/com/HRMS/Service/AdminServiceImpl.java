@@ -1,5 +1,6 @@
 package com.HRMS.Service;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -108,4 +109,13 @@ public class AdminServiceImpl implements AdminService{
 		adminDao.updateLeavesStatus(l,employeeId);
 		
 	}
+
+	@Override
+	public List<Employee_Leaves> leaveHistoryBydate(Date fromDate, Date toDate, String Status) {
+			// TODO Auto-generated method stub
+			return adminDao.leaveHistoryBydate(fromDate,toDate,Status);
+		
+	}
+
+	
 }
