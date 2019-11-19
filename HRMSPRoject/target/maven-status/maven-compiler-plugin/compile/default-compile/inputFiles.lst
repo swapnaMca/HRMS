@@ -1,5 +1,7 @@
+C:\Users\SPPSSystems\Documents\HRMSGit\HRMSPRoject\src\main\java\com\HRMS\Controller\RestControllerExample.java
 C:\Users\SPPSSystems\Documents\HRMSGit\HRMSPRoject\src\main\java\com\HRMS\Service\SetupServiceImpl.java
 C:\Users\SPPSSystems\Documents\HRMSGit\HRMSPRoject\src\main\java\com\HRMS\Model\Employee_Leaves.java
+C:\Users\SPPSSystems\Documents\HRMSGit\HRMSPRoject\src\main\java\com\HRMS\Controller\CommonController.java
 C:\Users\SPPSSystems\Documents\HRMSGit\HRMSPRoject\src\main\java\com\HRMS\Controller\LoginController.java
 C:\Users\SPPSSystems\Documents\HRMSGit\HRMSPRoject\src\main\java\com\HRMS\util\HRMSRole.java
 C:\Users\SPPSSystems\Documents\HRMSGit\HRMSPRoject\src\main\java\com\HRMS\dao\SetupDaoImpl.java
@@ -12,6 +14,8 @@ C:\Users\SPPSSystems\Documents\HRMSGit\HRMSPRoject\src\main\java\com\HRMS\Contro
 C:\Users\SPPSSystems\Documents\HRMSGit\HRMSPRoject\src\main\java\com\HRMS\Model\Projects.java
 C:\Users\SPPSSystems\Documents\HRMSGit\HRMSPRoject\src\main\java\com\HRMS\Service\EmployeeServiceImpl.java
 C:\Users\SPPSSystems\Documents\HRMSGit\HRMSPRoject\src\main\java\com\HRMS\Service\LoginServiceImpl.java
+C:\Users\SPPSSystems\Documents\HRMSGit\HRMSPRoject\src\main\java\com\HRMS\Model\Hrms_News.java
+C:\Users\SPPSSystems\Documents\HRMSGit\HRMSPRoject\src\main\java\com\HRMS\Model\EmployeeVO_Training.java
 C:\Users\SPPSSystems\Documents\HRMSGit\HRMSPRoject\src\main\java\com\HRMS\Model\DepartmentVO.java
 C:\Users\SPPSSystems\Documents\HRMSGit\HRMSPRoject\src\main\java\com\HRMS\Service\AdminService.java
 C:\Users\SPPSSystems\Documents\HRMSGit\HRMSPRoject\src\main\java\com\HRMS\Controller\SetupController.java

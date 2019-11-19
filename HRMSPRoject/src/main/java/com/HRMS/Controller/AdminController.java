@@ -7,6 +7,7 @@ import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Iterator;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -40,6 +41,7 @@ import com.HRMS.Model.Employee_Projects;
 import com.HRMS.Model.Projects;
 import com.HRMS.Service.AdminService;
 import com.mysql.jdbc.Blob;
+
 
 @Controller
 @SessionAttributes("DropDownList")// to populate drop down list
@@ -220,15 +222,54 @@ public class AdminController {
 		modelandView.setViewName("leaveHistoryRequestByDate");
 		return modelandView;
 	}
-	@RequestMapping("/leaveHistoryStatus/{id}/{SearchType}")
+	@RequestMapping("/leaveHistoryStatus/{id}/{empId}/{SearchType}")
 	public ModelAndView sendLeaveHistoryStatus(@PathVariable("id") int Id,
+			@PathVariable("empId") int empId,
 			@PathVariable("SearchType") String SearchType,
 			@ModelAttribute("employeeLeave") Employee_Leaves employeeLeave, 
 			Model model,HttpServletRequest request) {
-	ModelAndView modelandView =  new ModelAndView();
-	this.adminService.updateLeavesStatus(employeeLeave,Id);
-	modelandView.addObject("leaveStatusFlag","SuccessFully Send Leave Status");
-	System.out.println("leaveHistoryStatus))))))))))"+request.getServletPath());
+		
+		ModelAndView modelandView =  new ModelAndView();
+		Employee_Leaves leaves=null;
+		List<Employee_Leaves> list = this.adminService.leaveHistory(empId);
+		Iterator<Employee_Leaves> iterator = list.iterator();
+	    while (iterator.hasNext()) {
+	    	leaves = iterator.next();
+	        if (leaves.getId()==Id) {
+	            break;
+	        }
+	    }
+	    System.out.println("leaves from db...."+leaves);
+		System.out.println("employeeLeaveemployeeLeaveemployeeLeave"+leaves.getTotal_days()+"...."+((leaves.getAvilableLeaves())-(leaves.getTotal_days())));
+		System.out.println("employeeLeaveemployeeLeaveemployeeLeaveemployeeLeave"+(leaves.getAvilableLeaves()));
+		if(employeeLeave.getLeave_status().equalsIgnoreCase("Accept"))
+		{
+			/*to identify the last list for available leaves*/
+			System.out.println("**********"+list.get(list.size()-1).getAvilableLeaves());
+			int avialble_leaves=list.get(list.size()-2).getAvilableLeaves();
+			int total_days=leaves.getTotal_days();
+			int remaining=avialble_leaves-total_days;
+			System.out.println("avialble_leaves="+avialble_leaves);
+			System.out.println("total_days="+total_days);
+			System.out.println("remaining="+remaining);
+			leaves.setAvilableLeaves(avialble_leaves-total_days);
+			leaves.setLeave_status(employeeLeave.getLeave_status());
+		}
+		
+		else
+		{
+			
+			System.out.println("if(employeeLeave.ELSE...."+employeeLeave.getLeave_status());
+			leaves.setAvilableLeaves((list.get(list.size()-2).getAvilableLeaves()));
+			leaves.setLeave_status(employeeLeave.getLeave_status());
+
+		}
+		System.out.println("employeeLeave.setAvilableLeaves"+leaves.getAvilableLeaves());
+		this.adminService.updateLeavesStatus(leaves,Id);
+		List<Employee_Leaves> history = this.adminService.leaveHistory(empId);
+		modelandView.addObject("history", history);
+		modelandView.addObject("leaveStatusFlag","SuccessFully Send Leave Status");
+	
 if(SearchType.equalsIgnoreCase("ByDate"))
 	modelandView.setViewName("leaveHistoryRequestByDate");
 else

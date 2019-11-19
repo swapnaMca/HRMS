@@ -54,6 +54,7 @@ public class EmployeeDaoImpl implements EmployeeDao{
 	}
 
 	public void addDepartment(DepartmentVO e) {
+		System.out.println("add Department");
 		getSession().saveOrUpdate(e);
 	}
 

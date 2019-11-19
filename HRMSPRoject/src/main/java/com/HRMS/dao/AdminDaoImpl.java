@@ -23,7 +23,7 @@ import com.mysql.jdbc.Blob;
 
 @Repository("adminDao")
 public class AdminDaoImpl implements AdminDao{
-	private static final Logger logger = Logger.getLogger(AdminDaoImpl.class);
+	//private static final Logger logger = Logger.getLogger(AdminDaoImpl.class);
 
 	@Autowired
 	private SessionFactory sessionFactory;
@@ -43,6 +43,7 @@ public class AdminDaoImpl implements AdminDao{
 		{
 System.out.println("DAO....savesavesave");
 			session.save(e);
+			
 
 		}
 		else
@@ -58,7 +59,7 @@ System.out.println("DAO....savesavesave");
 		System.out.println("updateEmployee...."+e.getId()+"...."+e.getEmployeeLogin().getId());
 		Session session = this.sessionFactory.getCurrentSession();
 		session.update(e);
-		logger.info("&&&&&&&&&&&&&&&&&& updated successfully, Person Details="+e);
+		//logger.info("&&&&&&&&&&&&&&&&&& updated successfully, Person Details="+e);
 		
 	}
 
@@ -66,9 +67,9 @@ System.out.println("DAO....savesavesave");
 	public List<EmployeeVO> listPersons() {
 		Session session = this.sessionFactory.getCurrentSession();
 		List<EmployeeVO> personsList = session.createQuery("from EmployeeVO").list();
-		
+	
 		for(EmployeeVO p : personsList){
-			logger.info("Person List::"+p);
+		//	logger.info("Person List::"+p);
 		}
 		return personsList;
 		
@@ -79,7 +80,6 @@ System.out.println("DAO....savesavesave");
 		// TODO Auto-generated method stub
 		Session session = this.sessionFactory.getCurrentSession();		
 		EmployeeVO p = (EmployeeVO) session.load(EmployeeVO.class, new Integer(id));
-		logger.info("EmployeeVO loaded successfully, Person details="+p);
 		return p;
 	}
 
@@ -90,7 +90,7 @@ System.out.println("DAO....savesavesave");
 		if(null != p){
 			session.delete(p);
 		}
-		logger.info("EmployeeVO deleted successfully, person details="+p);
+	//	logger.info("EmployeeVO deleted successfully, person details="+p);
 		
 	}
 
@@ -100,7 +100,7 @@ System.out.println("DAO....savesavesave");
 		List<DepartmentVO> deptList = session.createQuery("from DepartmentVO").list();
 		System.out.println("*************EEEEEE"+deptList.get(0).getDepartmentId());
 		for(DepartmentVO p : deptList){
-			logger.info("dept List::::::::::"+p.getDepartmentId());
+		//	logger.info("dept List::::::::::"+p.getDepartmentId());
 		}
 		return deptList;
 	}
@@ -129,7 +129,7 @@ System.out.println("DAO....savesavesave");
 		Session session = this.sessionFactory.getCurrentSession();
 		List<Employee_Leaves> leaveHistory=new ArrayList<Employee_Leaves>();
 		
-		List<Object[]> rows=session.createSQLQuery("select {l.*},{v.*} from hrms_employee_leaves as l join leaves v on l.leaveId=v.leaveId where empId="+id).
+		List<Object[]> rows=session.createSQLQuery("select {l.*},{v.*} from hrms_employee_leaves as l join leaves v on l.leaveId=v.leaveId  where empId="+id+" ORDER BY l.Id asc").
 				addEntity("l",Employee_Leaves.class).
 				addJoin("v","l.leaves").list();
 		
@@ -174,6 +174,7 @@ System.out.println("DAO....savesavesave");
 		Employee_Leaves leaves=(Employee_Leaves) session.get(Employee_Leaves.class, employeeId);
 		
 		leaves.setLeave_status(l.getLeave_status());
+		leaves.setAvilableLeaves(l.getAvilableLeaves());
 		session.update(leaves);
 		
 	}
@@ -185,7 +186,9 @@ System.out.println("DAO....savesavesave");
 		List<Employee_Leaves> leavesList;
 		Session session=sessionFactory.getCurrentSession();
 		Criteria criteria=session.createCriteria(Employee_Leaves.class);
-		criteria.add(Restrictions.between("start_date",fromDate,toDate));	//order based on start_date
+		criteria.add(Restrictions.between("start_date",fromDate,toDate));
+		
+		//order based on start_date
 		if(!Status.equalsIgnoreCase("All"))
 		{
 			criteria.add(Restrictions.eq("leave_status", Status));

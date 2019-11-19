@@ -51,11 +51,29 @@ public class EmployeeController {
 			return "leaveRequest";
 		}
 	 	@RequestMapping("/sendLeaveRequest")
-		public String sendLeaveRequest(@ModelAttribute("employeeLeave") Employee_Leaves employeeLeave,Model model) {
-	 	employeeService.sendLeaveRequest(employeeLeave);
+		public String sendLeaveRequest(@ModelAttribute("employeeLeave") Employee_Leaves employeeLeave,Model model)
+	 	{
+	 		List<Employee_Leaves> LeaveList=this.employeeService.getEmployeeLeavesById(employeeLeave.getEmpId());
+	 		if(LeaveList.size()!=0)
+	 		{
+	 			//last applied leaves
+	 			System.out.println("from employee Controle"+LeaveList.size()+"......"+LeaveList.get(LeaveList.size()-1).getAvilableLeaves());
+	 			employeeLeave.setAvilableLeaves(LeaveList.get(LeaveList.size()-2).getAvilableLeaves());
+	 			System.out.println("IN IF LeaveList"+LeaveList.get(0).getAvilableLeaves());
+	 		}
+	 		else
+	 		{
+	 			employeeLeave.setAvilableLeaves(1);
+	 		}
+ 			employeeService.sendLeaveRequest(employeeLeave);
+
+	 		model.addAttribute("LeavesList",this.employeeService.getAllLeaves());
+			model.addAttribute("Success","Request Send Successfully");
+	 		return "leaveRequest";
+	 		/*employeeService.sendLeaveRequest(employeeLeave);
 		model.addAttribute("LeavesList",this.employeeService.getAllLeaves());
 		model.addAttribute("Success","Request Send Successfully");
-			return "leaveRequest";
+			return "leaveRequest";*/
 		}
 	 	@RequestMapping("/checkEmployeeLeaveStatus/{id}")
 	 	public String viewLeaveStatus(@PathVariable("id") int empId,Model model) 

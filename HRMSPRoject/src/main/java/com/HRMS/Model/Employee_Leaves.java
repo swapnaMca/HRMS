@@ -30,6 +30,7 @@ public class Employee_Leaves implements Serializable {
 	private Date start_date;
 	private Date end_date;
 	private int total_days;
+	private int avilableLeaves;
 	private String leave_status;
 	
 	@ManyToOne(cascade=CascadeType.MERGE)
@@ -135,6 +136,14 @@ public class Employee_Leaves implements Serializable {
 			return false;
 		return true;
 	}
+	public int getAvilableLeaves() {
+		return avilableLeaves;
+	}
+
+	public void setAvilableLeaves(int avilableLeaves) {
+		this.avilableLeaves = avilableLeaves;
+	}
+
 	public Leaves getLeaves() {
 		return leaves;
 	}

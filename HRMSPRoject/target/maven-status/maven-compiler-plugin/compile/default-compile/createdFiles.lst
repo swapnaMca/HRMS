@@ -1,14 +1,17 @@
 com\HRMS\util\CustomHtmlLayout.class
+com\HRMS\Controller\RestControllerExample.class
 com\HRMS\Model\EmployeeVOImage.class
 com\HRMS\dao\SetupDao.class
 com\HRMS\Model\EmployeeVO.class
 com\HRMS\dao\EmployeeDaoImpl.class
 com\HRMS\Service\EmployeeServiceImpl.class
+com\HRMS\Controller\CommonController.class
 com\HRMS\dao\AdminDao.class
 com\HRMS\Service\LoginService.class
 com\HRMS\Controller\LoginController.class
 com\HRMS\Controller\SetupController.class
 com\HRMS\dao\LoginDaoImpl.class
+com\HRMS\Model\EmployeeVO_Training.class
 com\HRMS\Service\EmployeeService.class
 com\HRMS\dao\SetupDaoImpl.class
 com\HRMS\dao\AdminDaoImpl.class
@@ -16,6 +19,7 @@ com\HRMS\Service\LoginServiceImpl.class
 com\HRMS\Service\SetupService.class
 com\HRMS\Service\AdminService.class
 com\HRMS\Service\SetupServiceImpl.class
+com\HRMS\Model\Hrms_News.class
 com\HRMS\Service\AdminServiceImpl.class
 com\HRMS\Model\Leaves.class
 com\HRMS\Model\Employee_Projects.class

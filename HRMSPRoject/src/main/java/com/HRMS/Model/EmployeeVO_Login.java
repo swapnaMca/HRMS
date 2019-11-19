@@ -49,7 +49,7 @@ public class EmployeeVO_Login implements Serializable
 	private String role;
 	
 	@Lob
-	 @Column(name="photo")
+	@Column(name="photo")
 	private  byte[] photo;
 	
 	
