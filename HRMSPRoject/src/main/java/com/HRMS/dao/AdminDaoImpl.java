@@ -66,6 +66,7 @@ System.out.println("DAO....savesavesave");
 	
 	public List<EmployeeVO> listPersons() {
 		Session session = this.sessionFactory.getCurrentSession();
+		
 		List<EmployeeVO> personsList = session.createQuery("from EmployeeVO").list();
 	
 		for(EmployeeVO p : personsList){

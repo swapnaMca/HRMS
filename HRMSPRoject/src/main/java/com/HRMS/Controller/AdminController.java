@@ -338,7 +338,7 @@ else
 	public List<Integer> GetDropDownData(List<Object> list, String type) {
 		List<Integer> dataList = new ArrayList<Integer>();
 
-		List<String> dataList2 = new ArrayList<String>();
+		
 
 		if (type.equalsIgnoreCase("department")) {
 			for (Object dept : list) {

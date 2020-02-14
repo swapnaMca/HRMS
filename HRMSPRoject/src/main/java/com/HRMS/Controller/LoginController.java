@@ -38,7 +38,7 @@ public class LoginController {
 	@Autowired
 	LoginService loginService;
 
-	private Validator validator;
+	
 	
 	
 	
@@ -109,6 +109,7 @@ public class LoginController {
 			}
 		
 			model.addAttribute(employee);
+		
 			modelAndView.addObject("user", employee);
 			modelAndView.addObject("login", employee);
 			
