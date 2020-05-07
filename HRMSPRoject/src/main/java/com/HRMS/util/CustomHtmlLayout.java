@@ -34,6 +34,10 @@ super();
 public void  changeCommitPurpose()
 {
 }
+public void  changeCommitPurpose2()
+{
+}
+
 
 /** Override HTMLLayout's format() method */
 
