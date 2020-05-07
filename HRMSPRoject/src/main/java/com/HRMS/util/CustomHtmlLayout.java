@@ -18,7 +18,7 @@ private String timestampFormat = "HH:mm:ss.SZ"; // Default format. Example: 2008
 
 private SimpleDateFormat sdf = new SimpleDateFormat(timestampFormat);
 
-private void sysout() {
+private void sysout4() {
 	// TODO Auto-generated method stub
 
 }
