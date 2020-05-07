@@ -22,6 +22,10 @@ private void sysout4() {
 	// TODO Auto-generated method stub
 
 }
+private void sysout6() {
+	// TODO Auto-generated method stub
+
+}
 private void sysout1() {
 	// TODO Auto-generated method stub
 
