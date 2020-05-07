@@ -23,6 +23,10 @@ public CustomHtmlLayout()
 super();
 }
 
+public void  changeCommitPurpose()
+{
+}
+
 /** Override HTMLLayout's format() method */
 
 public String format(LoggingEvent event)
