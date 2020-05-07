@@ -9,3 +9,16 @@ Java object to compatible database type and retrieving back to the application.
 // swapnaRao@2013
 /Multi row
 https://stackoverflow.com/questions/8078767/how-to-insert-multiple-rows-from-web-form-into-database-using-java-spring-framew
+
+
+Annotations:
+@temporal
+-->https://javabydeveloper.com/temporal/
+in java if we send only date it will generate time also
+-->@Temporal(TemporalType.DATE) drops the time value and only preserves the date.
+--->finally it will conver util.date to database type(sql.date)
+--->@Temporal annotation solves the one of the major issue of converting the date and time values from 
+Java object to compatible database type and retrieving back to the application.
+// swapnaRao@2013
+/Multi row
+https://stackoverflow.com/questions/8078767/how-to-insert-multiple-rows-from-web-form-into-database-using-java-spring-framew
