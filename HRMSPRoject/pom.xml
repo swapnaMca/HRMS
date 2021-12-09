@@ -14,7 +14,7 @@
     <hibernate.version>4.3.5.Final</hibernate.version>
     <org.springframework-version>4.1.4.RELEASE</org.springframework-version>
     <apachetiles.version>3.0.8</apachetiles.version>
-	 <jackson.databind-version>2.8.7</jackson.databind-version>
+	 <jackson.databind-version>2.9.10.8</jackson.databind-version>
 	
   </properties>
 
